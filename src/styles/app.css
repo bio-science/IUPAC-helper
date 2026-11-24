@@ -1,0 +1,1482 @@
+/* ---------- Colours and sizes used across the page ---------- */
+:root {
+  --page-background: #f4f6f8;
+  --card-background: #ffffff;
+  --text-colour: #1d2733;
+  --muted-text-colour: #5b6875;
+  --border-colour: #d5dbe1;
+  --accent-colour: #2463b5;
+  --correct-colour: #1d8a3a;
+  --incorrect-colour: #c62828;
+  --warning-colour: #c62828;
+  /* What a picked step of "How it was named" is about, in the name and on the drawing */
+  --naming-step-mark: #ffe58a;
+  --naming-step-glow: rgb(255 196 0 / 0.45);
+
+  --carbon-fill: #3a3f45;
+  --carbon-text: #ffffff;
+  --hydrogen-fill: #ffffff;
+  --hydrogen-outline: #7b8794;
+  --bond-colour: #4a525b;
+  /* Halogens, in the colours molecular model kits use */
+  --fluorine-fill: #b5e48c;
+  --fluorine-text: #1d2733;
+  --chlorine-fill: #2f9e44;
+  --chlorine-text: #ffffff;
+  --bromine-fill: #8f2d2d;
+  --bromine-text: #ffffff;
+  --iodine-fill: #6a2c91;
+  --iodine-text: #ffffff;
+  --oxygen-fill: #e03131;
+  --oxygen-text: #ffffff;
+  --nitrogen-fill: #3b5bdb;
+  --nitrogen-text: #ffffff;
+
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-colour);
+  background: var(--page-background);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid var(--border-colour);
+  border-radius: 6px;
+  background: var(--card-background);
+  color: inherit;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--accent-colour);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button--selected {
+  background: var(--accent-colour);
+  border-color: var(--accent-colour);
+  color: #ffffff;
+}
+
+.button--primary {
+  background: var(--accent-colour);
+  border-color: var(--accent-colour);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* ---------- Page layout: everything fits on one screen ---------- */
+.app {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  height: 100vh;
+  height: 100dvh;
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 0.6rem 1rem;
+}
+
+/* The title and subtitle, with the Install app button and the language picker on the right */
+.app__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.app__titles {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0 1rem;
+}
+
+.app__header h1 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.app__header p {
+  margin: 0;
+  color: var(--muted-text-colour);
+}
+
+/* ---------- Installing the app (phones and tablets only) ---------- */
+/* No taller than the title, so the drawing keeps all its room */
+.install-app-button {
+  flex: none;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.6rem;
+  white-space: nowrap;
+}
+
+/* The one-time note on iPhone and iPad, along the bottom of the screen */
+.apple-install-note {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  z-index: 10;
+  transform: translateX(-50%);
+  width: min(24rem, 100% - 2rem);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.9rem;
+  background: var(--card-background);
+  border: 1px solid var(--border-colour);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.18);
+}
+
+.apple-install-note p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.apple-install-note button {
+  flex: none;
+}
+
+.apple-install-note__share-symbol {
+  width: 0.8em;
+  height: 1em;
+  vertical-align: -0.1em;
+  color: var(--accent-colour);
+}
+
+/* ---------- Language picker: the top-right corner ---------- */
+.language-picker {
+  position: relative;
+  flex: none;
+}
+
+/* The current flag and a down arrow, no taller than the Install app button */
+.language-picker__button {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.45rem;
+}
+
+.language-picker__flag {
+  display: block;
+  width: 1.5rem;
+  height: 1.125rem;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15);
+}
+
+.language-picker__arrow {
+  width: 0.65rem;
+  height: 0.4rem;
+  color: var(--muted-text-colour);
+  transition: transform 0.15s;
+}
+
+.language-picker__arrow--open {
+  transform: rotate(180deg);
+}
+
+/*
+ * The list of languages, under the button and lined up with its right edge. Each row is
+ * flag, name in the current language, divider, name in its own language, and the rows
+ * share columns (subgrid) so the dividers line up.
+ */
+.language-picker__list {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  right: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  column-gap: 0.6rem;
+  width: max-content;
+  max-height: min(26rem, 100dvh - 5rem);
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.3rem;
+  list-style: none;
+  background: var(--card-background);
+  border: 1px solid var(--border-colour);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.15);
+}
+
+.language-picker__list:focus {
+  outline: none;
+}
+
+.language-picker__option {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.language-picker__option--highlighted {
+  background: #e7effa;
+}
+
+.language-picker__option[aria-selected='true'] {
+  font-weight: 600;
+  color: var(--accent-colour);
+}
+
+.language-picker__divider {
+  align-self: stretch;
+  width: 1px;
+  background: var(--border-colour);
+}
+
+.language-picker__native-name {
+  color: var(--muted-text-colour);
+}
+
+.language-picker__option[aria-selected='true'] .language-picker__native-name {
+  color: inherit;
+}
+
+/* Shown if a language couldn't be downloaded (for example, offline) */
+.language-picker__problem {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  right: 0;
+  z-index: 20;
+  width: 16rem;
+  margin: 0;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.85rem;
+  color: var(--warning-colour);
+  background: var(--card-background);
+  border: 1px solid var(--border-colour);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.15);
+}
+
+/* ---------- Omnibox: top middle of the drawing ---------- */
+.omnibox__field {
+  position: relative;
+  background: var(--card-background);
+  border-radius: 8px;
+}
+
+.omnibox__input,
+.omnibox__marks,
+.omnibox__job-change {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.15rem;
+  line-height: normal;
+  letter-spacing: normal;
+  padding: 0.55rem 0.8rem;
+  border: 2px solid var(--border-colour);
+  border-radius: 8px;
+}
+
+.omnibox__input {
+  position: relative;
+  background: transparent;
+  color: inherit;
+}
+
+/* The copy of the text behind the text box that carries the marks: its own letters are not drawn. */
+.omnibox__marks {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  white-space: pre;
+  color: transparent;
+  border-color: transparent;
+  pointer-events: none;
+}
+
+.omnibox__marks .highlighted-text__mark {
+  color: transparent;
+}
+
+.omnibox__input:focus {
+  outline: none;
+  border-color: var(--accent-colour);
+}
+
+.omnibox__message {
+  margin: 0.3rem 0 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.omnibox__message--hint {
+  color: var(--muted-text-colour);
+}
+
+.omnibox__message--warning {
+  color: var(--warning-colour);
+  font-weight: 600;
+}
+
+.omnibox__message--info {
+  color: var(--text-colour);
+}
+
+.omnibox__message--incorrect {
+  color: var(--incorrect-colour);
+}
+
+/* While practising, the tick or cross sits inside the right-hand end of the omnibox. */
+.omnibox__input--guessing {
+  padding-right: 2.6rem;
+}
+
+/* Set here so the animated copy of the placeholder below can match it exactly. */
+.omnibox__input::placeholder {
+  color: var(--muted-text-colour);
+  opacity: 1;
+}
+
+/*
+ * When the omnibox switches between drawing and practising, over about two and a half seconds:
+ * the old placeholder fades out, the new one pops in from the left one letter after another
+ * (the delay for each letter is set in Omnibox.jsx), then the new placeholder pulses in the
+ * accent colour. The real placeholder is hidden until it ends. The pulse is on this layer (the
+ * new placeholder takes its colour from it) and the layer is removed when the pulse ends, so the
+ * pulse must stay the longest animation here.
+ */
+.omnibox__input--placeholder-swapping::placeholder {
+  color: transparent;
+}
+
+.omnibox__job-change {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  white-space: pre;
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted-text-colour);
+  pointer-events: none;
+  animation: omnibox-placeholder-pulse 2.6s ease-in-out;
+}
+
+.omnibox__job-change--guessing {
+  padding-right: 2.6rem;
+}
+
+.omnibox__placeholder-leaving,
+.omnibox__placeholder-arriving {
+  grid-area: 1 / 1;
+  overflow: hidden;
+}
+
+.omnibox__placeholder-leaving {
+  color: var(--muted-text-colour);
+  opacity: 0;
+  animation: omnibox-placeholder-leave 0.3s ease-in;
+}
+
+/* Each letter waits for its turn (animation-delay, set in Omnibox.jsx) hidden to the left. */
+.omnibox__placeholder-letter {
+  display: inline-block;
+  animation: omnibox-placeholder-letter-arrive 0.35s ease-out backwards;
+}
+
+@keyframes omnibox-placeholder-leave {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* In from the left, going a touch too far and settling back, so it pops into place. */
+@keyframes omnibox-placeholder-letter-arrive {
+  0% {
+    opacity: 0;
+    transform: translateX(-0.6em);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(0.1em);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/* Letters finish arriving at about 1.6s; the pulse is from about 1.7s to the end. */
+@keyframes omnibox-placeholder-pulse {
+  0%,
+  65% {
+    color: var(--muted-text-colour);
+  }
+  80% {
+    color: var(--accent-colour);
+  }
+  100% {
+    color: var(--muted-text-colour);
+  }
+}
+
+/* Without the movement: the letters just fade in, then the pulse. */
+@media (prefers-reduced-motion: reduce) {
+  .omnibox__placeholder-letter {
+    transform: none !important;
+  }
+}
+
+.omnibox__mark {
+  position: absolute;
+  top: 50%;
+  right: 0.7rem;
+  transform: translateY(-50%);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.omnibox__isomers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+  max-height: 4.6rem;
+  overflow-y: auto;
+}
+
+.isomer-chip {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.isomer-chip--chosen {
+  background: var(--accent-colour);
+  border-color: var(--accent-colour);
+  color: #ffffff;
+}
+
+/* ---------- Diagram card ---------- */
+.diagram-card {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  min-height: 0;
+  background: var(--card-background);
+  border: 1px solid var(--border-colour);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/*
+ * Along the top: the view buttons in the top-right corner, then a line's gap, then the
+ * omnibox and title in the middle. The bottom has any note about the practice molecule,
+ * a line's gap, then Undo in the bottom-left corner.
+ */
+.diagram-card {
+  --gap-of-one-line: 1.5rem;
+}
+
+.diagram-card__top {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0.6rem 0;
+}
+
+/* Practise in the top-left corner, the view buttons in the top-right */
+.diagram-card__corner-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.diagram-card__corner-spacer {
+  flex: 1;
+}
+
+/* While practising, next to Practise: the ready-made choice, and an arrow that opens the tickboxes */
+.practise-options {
+  position: relative;
+  display: flex;
+  gap: 0.2rem;
+}
+
+.practise-options__preset {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--border-colour);
+  border-radius: 6px;
+  background: var(--card-background);
+  color: inherit;
+  cursor: pointer;
+}
+
+.practise-options__preset:hover {
+  border-color: var(--accent-colour);
+}
+
+.diagram-card__corner-buttons .practise-options__arrow-button {
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.45rem;
+}
+
+.practise-options__arrow {
+  width: 0.65rem;
+  height: 0.4rem;
+  color: var(--muted-text-colour);
+  transition: transform 0.15s;
+}
+
+.practise-options__arrow--open {
+  transform: rotate(180deg);
+}
+
+.practise-options__panel {
+  position: absolute;
+  top: calc(100% + 0.3rem);
+  left: 0;
+  z-index: 20;
+  width: max-content;
+  max-width: min(22rem, 100vw - 2rem);
+  max-height: min(30rem, 100dvh - 8rem);
+  overflow-y: auto;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+  background: var(--card-background);
+  border: 1px solid var(--border-colour);
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.15);
+}
+
+.practise-options__heading {
+  margin: 0.3rem 0 0.2rem;
+  font-weight: 600;
+}
+
+.practise-options__features {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.practise-options__feature {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.15rem 0;
+  cursor: pointer;
+}
+
+.practise-options__feature:has(input:disabled) {
+  cursor: not-allowed;
+}
+
+/* A choice that only works with the feature above it, such as E/Z isomers under Alkenes */
+.practise-options__feature--needs-another {
+  /* One step in for each feature it needs in turn (countFeaturesNeeded). */
+  padding-left: calc(1.4rem * var(--features-needed, 1));
+}
+
+.practise-options__features--not-yet {
+  color: var(--muted-text-colour);
+  opacity: 0.7;
+}
+
+.practise-options__note {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted-text-colour);
+}
+
+.diagram-card__corner-buttons button,
+.diagram-card__undo {
+  font-size: 0.85rem;
+  padding: 0.2rem 0.6rem;
+}
+
+.diagram-card__top-middle {
+  align-self: center;
+  width: min(36rem, 100% - 2rem);
+  margin-top: var(--gap-of-one-line);
+}
+
+.diagram-card__drawing {
+  position: relative;
+  min-height: 0;
+}
+
+.diagram-card__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0 0.6rem 0.5rem;
+}
+
+/* While practising, after the practice molecule has been changed by hand */
+.practice-changed {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--warning-colour);
+}
+
+
+/* The name or formula, just under the omnibox */
+.diagram-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  padding-top: 0.4rem;
+  text-align: center;
+}
+
+.diagram-title p,
+.diagram-title h2 {
+  margin: 0;
+}
+
+.diagram-title__name {
+  font-size: 1.5rem;
+}
+
+/* The (?) after a retained name, and the pop-in it opens, on a line of its own under the name */
+.diagram-title__retained-name-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-left: 0.35rem;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  vertical-align: middle;
+  color: var(--accent-colour);
+}
+
+.diagram-title__retained-name-button[aria-expanded='true'] {
+  border-color: var(--accent-colour);
+  background: var(--naming-step-mark);
+}
+
+.diagram-title__retained-name {
+  order: 1;
+  flex-basis: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 0.45rem 0.55rem;
+  text-align: left;
+  background: var(--page-background);
+  border: 1px solid var(--accent-colour);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+  font-size: 0.9rem;
+  animation: naming-steps-pop-in 0.12s ease-out;
+}
+
+.diagram-title .diagram-title__retained-name p {
+  margin: 0.3rem 0 0;
+}
+
+.diagram-title__retained-name-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.diagram-title__retained-name-close {
+  padding: 0 0.4rem;
+  line-height: 1.3;
+}
+
+.diagram-title__formula {
+  font-size: 1.2rem;
+  color: var(--muted-text-colour);
+}
+
+
+.diagram-title__practise-buttons {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.diagram-title__not-nameable {
+  color: var(--warning-colour);
+}
+
+.diagram-card__controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-top: 1px solid var(--border-colour);
+}
+
+/* ---------- Drawing area ---------- */
+.molecule-canvas {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+}
+
+.molecule-canvas > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+
+/* While the omnibox holds text that hasn't drawn a new molecule, the molecule and title
+   shown are the earlier ones, so they are greyed out a little. */
+.molecule-canvas > svg,
+.diagram-title {
+  transition: opacity 0.15s, filter 0.15s;
+}
+
+.diagram-card--out-of-date .molecule-canvas > svg,
+.diagram-card--out-of-date .diagram-title {
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+/* What the pointer looks like: grab the background, move an atom, turn a bond */
+.grab-target {
+  fill: transparent;
+  stroke: transparent;
+}
+
+.molecule-canvas {
+  /* A circular arrow, for turning a bond. */
+  --turn-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M19 12a7 7 0 1 1-2.05-4.95' fill='none' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M19 12a7 7 0 1 1-2.05-4.95' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/%3E%3Cpath d='M18 2v6h-6' fill='none' stroke='black' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 12 12, pointer;
+}
+
+.grab-target--bond {
+  stroke-width: 16;
+  cursor: var(--turn-cursor);
+}
+
+.molecule-canvas--turning svg,
+.molecule-canvas--turning svg * {
+  cursor: var(--turn-cursor);
+}
+
+/* A group, or the bond to it, moves the group. Ctrl + click makes the bond to an OH double */
+.grab-target--group-bond {
+  stroke-width: 12;
+  cursor: move;
+}
+
+.grab-target--carbon,
+.grab-target--group,
+.grab-target--hydrogen,
+.grab-target--link {
+  cursor: move;
+}
+
+/* While Erase is on, everything a click would take away is marked in red (see ErasePreview.jsx) */
+.molecule-canvas--erasing .grab-target {
+  cursor: pointer;
+}
+
+.molecule-canvas--erasing .grab-target--hydrogen {
+  cursor: not-allowed;
+}
+
+/* The group is faded as a whole, so the marks don't get darker where they overlap */
+.erase-preview {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.erase-preview__bond {
+  fill: none;
+  stroke: var(--incorrect-colour);
+  stroke-width: 16;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.erase-preview__atom {
+  fill: var(--incorrect-colour);
+}
+
+/* With Ctrl held, the bond under the pointer lights up if a click would make it double or single */
+.molecule-canvas--bond-changing .grab-target--bond:hover {
+  stroke: var(--accent-colour);
+  stroke-opacity: 0.35;
+  cursor: pointer;
+}
+
+.molecule-canvas--bond-locked .grab-target--bond:hover {
+  cursor: not-allowed;
+}
+
+.molecule-canvas--panning svg,
+.molecule-canvas--panning svg * {
+  cursor: grabbing;
+}
+
+.molecule-canvas--moving svg,
+.molecule-canvas--moving svg * {
+  cursor: move;
+}
+
+.molecule-canvas--adding svg,
+.molecule-canvas--adding svg * {
+  cursor: crosshair;
+}
+
+/* The hint that follows the mouse, a little below and to the right of it */
+.molecule-canvas__pointer-hint {
+  position: absolute;
+  margin: 18px 0 0 16px;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: var(--muted-text-colour);
+  background: rgb(255 255 255 / 0.85);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.molecule-canvas__empty-message {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  color: var(--muted-text-colour);
+  pointer-events: none;
+}
+
+/* ---------- Add atom menu: on the left of the drawing, from a little above the middle ---------- */
+.add-atom-palette {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-30%);
+  display: flex;
+  align-items: center;
+}
+
+.add-atom-palette__body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.3rem;
+  padding: 0.45rem;
+  background: var(--card-background);
+  border: 1px solid var(--border-colour);
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 2px 2px 8px rgb(0 0 0 / 0.08);
+}
+
+.add-atom-palette__title {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted-text-colour);
+}
+
+.add-atom-palette__title--with-tips {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3rem;
+}
+
+/* The (?) beside "Add atom", and the short tips it opens beside the menu */
+.add-atom-palette__tips-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent-colour);
+}
+
+.add-atom-palette__tips-button[aria-expanded='true'] {
+  border-color: var(--accent-colour);
+  background: var(--naming-step-mark);
+}
+
+.add-atom-palette__tips {
+  position: absolute;
+  left: calc(100% + 0.4rem);
+  top: 0;
+  z-index: 2;
+  width: 15rem;
+  padding: 0.4rem 0.55rem;
+  background: var(--page-background);
+  border: 1px solid var(--accent-colour);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+  font-size: 0.8rem;
+  animation: naming-steps-pop-in 0.12s ease-out;
+}
+
+.add-atom-palette__tips ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.add-atom-palette__tips li + li {
+  margin-top: 0.25rem;
+}
+
+.add-atom-palette__atom {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.45rem 0.2rem 0.2rem;
+}
+
+.add-atom-palette--small .add-atom-palette__atom {
+  padding: 0.2rem;
+}
+
+.add-atom-palette__symbol {
+  display: inline-grid;
+  place-items: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 0.8rem;
+  background: var(--hydrogen-fill);
+  color: var(--text-colour);
+  border: 1.5px solid var(--hydrogen-outline);
+}
+
+.add-atom-palette__symbol--O {
+  background: var(--oxygen-fill);
+  border-color: var(--oxygen-fill);
+  color: var(--oxygen-text);
+}
+
+.add-atom-palette__symbol--N {
+  background: var(--nitrogen-fill);
+  border-color: var(--nitrogen-fill);
+  color: var(--nitrogen-text);
+}
+
+.add-atom-palette__symbol--F {
+  background: var(--fluorine-fill);
+  border-color: var(--fluorine-fill);
+  color: var(--fluorine-text);
+}
+
+.add-atom-palette__symbol--Cl {
+  background: var(--chlorine-fill);
+  border-color: var(--chlorine-fill);
+  color: var(--chlorine-text);
+}
+
+.add-atom-palette__symbol--Br {
+  background: var(--bromine-fill);
+  border-color: var(--bromine-fill);
+  color: var(--bromine-text);
+}
+
+.add-atom-palette__symbol--I {
+  background: var(--iodine-fill);
+  border-color: var(--iodine-fill);
+  color: var(--iodine-text);
+}
+
+/* Erase isn't an atom, so its symbol has no circle (it keeps the same size so the buttons line up). */
+.add-atom-palette__symbol--not-an-atom {
+  background: none;
+  border-color: transparent;
+  color: inherit;
+  font-size: 0.95rem;
+}
+
+.add-atom-palette__atom--ready {
+  outline: 3px solid var(--accent-colour);
+  outline-offset: 2px;
+}
+
+.add-atom-palette__double-bond,
+.add-atom-palette__erase {
+  margin-top: 0.25rem;
+}
+
+.button--danger-selected {
+  background: var(--incorrect-colour);
+  border-color: var(--incorrect-colour);
+  color: #ffffff;
+}
+
+.add-atom-palette__tab {
+  padding: 0.6rem 0.2rem;
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--muted-text-colour);
+}
+.bond-line {
+  stroke: var(--bond-colour);
+  stroke-width: 3;
+}
+
+.bond-line--to-hydrogen {
+  stroke-width: 2;
+}
+
+.skeletal-bond-line {
+  stroke: var(--text-colour);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.skeletal-formula-label {
+  font-size: 28px;
+  fill: var(--text-colour);
+}
+
+/* Atoms drawn as particles */
+.atom-circle text {
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.atom-circle--carbon circle {
+  fill: var(--carbon-fill);
+}
+
+.atom-circle--carbon text {
+  fill: var(--carbon-text);
+}
+
+.atom-circle--hydrogen circle {
+  fill: var(--hydrogen-fill);
+  stroke: var(--hydrogen-outline);
+  stroke-width: 1.5;
+}
+
+.atom-circle--hydrogen text {
+  fill: var(--text-colour);
+}
+
+.atom-circle--oxygen circle {
+  fill: var(--oxygen-fill);
+}
+
+.atom-circle--oxygen text {
+  fill: var(--oxygen-text);
+}
+
+.atom-circle--nitrogen circle {
+  fill: var(--nitrogen-fill);
+}
+
+.atom-circle--nitrogen text {
+  fill: var(--nitrogen-text);
+}
+
+.atom-circle--fluorine circle {
+  fill: var(--fluorine-fill);
+}
+
+.atom-circle--fluorine text {
+  fill: var(--fluorine-text);
+}
+
+.atom-circle--chlorine circle {
+  fill: var(--chlorine-fill);
+}
+
+.atom-circle--chlorine text {
+  fill: var(--chlorine-text);
+}
+
+.atom-circle--bromine circle {
+  fill: var(--bromine-fill);
+}
+
+.atom-circle--bromine text {
+  fill: var(--bromine-text);
+}
+
+.atom-circle--iodine circle {
+  fill: var(--iodine-fill);
+}
+
+.atom-circle--iodine text {
+  fill: var(--iodine-text);
+}
+
+.skeletal-group-label {
+  font-size: 24px;
+  font-weight: 600;
+  fill: var(--text-colour);
+}
+
+/* The hydrogen (or group) that a new atom is about to replace */
+.atom-circle--being-replaced circle {
+  fill: #fde2e2;
+  stroke: var(--incorrect-colour);
+  stroke-width: 2.5;
+}
+
+.atom-circle--being-replaced text {
+  fill: var(--incorrect-colour);
+}
+
+.bond-line--being-replaced {
+  stroke: var(--incorrect-colour);
+  stroke-dasharray: 4 3;
+}
+
+/* The faded carbon that follows the pointer before it is placed */
+.placement-preview {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.placement-preview__bond {
+  stroke: var(--accent-colour);
+  stroke-width: 3;
+  stroke-dasharray: 8 6;
+}
+
+.placement-preview--not-allowed .atom-circle circle {
+  fill: var(--incorrect-colour);
+}
+
+/* ---------- Tick and cross for the student's answer ---------- */
+.mark {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.mark--correct {
+  color: var(--correct-colour);
+}
+
+.mark--incorrect {
+  color: var(--incorrect-colour);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  font-size: 0.75rem;
+  color: var(--muted-text-colour);
+  text-align: center;
+}
+
+/* The four halogens sit two by two in the Add atom menu, and in one column when it is small */
+.add-atom-palette__halogens {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: start;
+  gap: 0.3rem;
+}
+
+.add-atom-palette--small .add-atom-palette__halogens {
+  grid-template-columns: auto;
+}
+
+.add-atom-palette__halogens .add-atom-palette__atom {
+  padding: 0.2rem;
+}
+
+.molecule-canvas--swapping-group svg,
+.molecule-canvas--swapping-group svg * {
+  cursor: pointer;
+}
+
+/* ---------- How it was named: on the right of the drawing ---------- */
+.highlighted-text__mark {
+  background: var(--naming-step-mark);
+  color: inherit;
+  border-radius: 3px;
+}
+
+.naming-steps {
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.naming-steps > * {
+  pointer-events: auto;
+}
+
+.naming-steps__tab {
+  border-radius: 8px 0 0 8px;
+  border-right: none;
+  padding: 0.35rem 0.6rem;
+  white-space: nowrap;
+  box-shadow: -2px 2px 8px rgb(0 0 0 / 0.08);
+}
+
+.naming-steps--open .naming-steps__tab {
+  padding: 0.35rem 0.5rem;
+}
+
+.naming-steps__body {
+  width: min(20rem, 70vw);
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 0.5rem 0.6rem;
+  background: var(--card-background);
+  border: 1px solid var(--border-colour);
+  border-right: none;
+  border-radius: 0 0 0 10px;
+  box-shadow: -2px 2px 8px rgb(0 0 0 / 0.08);
+}
+
+.naming-steps__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0 0 0.4rem;
+}
+
+.naming-steps__title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* [P]: explain the preferred IUPAC name (pressed) or the systematic name */
+.naming-steps__preferred-toggle {
+  min-width: 1.8rem;
+  padding: 0.1rem 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted-text-colour);
+}
+
+.naming-steps__preferred-toggle[aria-pressed='true'] {
+  border-color: var(--accent-colour);
+  background: var(--naming-step-mark);
+  color: var(--accent-colour);
+}
+
+.naming-steps__explained-name {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted-text-colour);
+}
+
+.naming-steps__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.naming-steps__step {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.3rem 0.5rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.naming-steps__step--chosen {
+  border-color: var(--accent-colour);
+  background: var(--naming-step-mark);
+}
+
+.naming-steps__number {
+  min-width: 1.2rem;
+  font-weight: 600;
+  color: var(--accent-colour);
+}
+
+.naming-steps__explanation {
+  margin-top: 0.5rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--border-colour);
+  font-size: 0.9rem;
+}
+
+.naming-steps__explanation p {
+  margin: 0 0 0.4rem;
+}
+
+/* The (?) after an explanation, and the pop-in it opens */
+.naming-steps__more-info-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-left: 0.15rem;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  vertical-align: text-bottom;
+  color: var(--accent-colour);
+}
+
+.naming-steps__more-info-button[aria-expanded='true'] {
+  border-color: var(--accent-colour);
+  background: var(--naming-step-mark);
+}
+
+.naming-steps__more-info {
+  margin: 0 0 0.4rem;
+  padding: 0.45rem 0.55rem;
+  background: var(--page-background);
+  border: 1px solid var(--accent-colour);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+  font-size: 0.85rem;
+  animation: naming-steps-pop-in 0.12s ease-out;
+}
+
+@keyframes naming-steps-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.naming-steps__more-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.naming-steps__more-info-close {
+  padding: 0 0.4rem;
+  line-height: 1.3;
+}
+
+.naming-steps__explanation .naming-steps__more-info p {
+  margin: 0.3rem 0;
+}
+
+.naming-steps__ranked-list {
+  margin: 0.3rem 0;
+  padding-left: 1.4rem;
+}
+
+.naming-steps__breakdown {
+  margin: 0.4rem 0 0;
+}
+
+.naming-steps__breakdown ul {
+  margin: 0.2rem 0;
+  padding-left: 1.2rem;
+}
+
+.naming-steps__breakdown li {
+  margin: 0.15rem 0;
+}
+
+.naming-steps__ranked-item--here {
+  font-weight: 600;
+  background: var(--naming-step-mark);
+  border-radius: 4px;
+}
+
+.naming-steps__here {
+  margin-left: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--muted-text-colour);
+}
+
+.naming-steps__rules {
+  color: var(--muted-text-colour);
+  font-size: 0.8rem;
+}
+
+/* The marks on the drawing, underneath the molecule */
+.naming-step-highlight {
+  pointer-events: none;
+}
+
+.naming-step-highlight__bond {
+  stroke: var(--naming-step-glow);
+  stroke-width: 26;
+  stroke-linecap: round;
+}
+
+.naming-step-highlight__atom {
+  fill: var(--naming-step-glow);
+}
+
+.naming-step-locants {
+  pointer-events: none;
+}
+
+.naming-step-locants__badge {
+  fill: var(--card-background);
+  stroke: var(--accent-colour);
+  stroke-width: 2;
+}
+
+.naming-step-locants__number {
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--accent-colour);
+}

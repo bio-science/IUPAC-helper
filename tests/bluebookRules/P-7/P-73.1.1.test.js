@@ -1,0 +1,7 @@
+/**
+ * P-73.1.1  Cations centers in parent hydrides
+ * Nomenclature of Organic Chemistry: IUPAC Recommendations and Preferred Names 2013 (the Blue Book)
+ */
+import { ruleIsHeadingOnly } from '../support/checkRule.js';
+
+ruleIsHeadingOnly('P-73.1.1');

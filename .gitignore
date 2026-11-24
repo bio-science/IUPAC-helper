@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+test-results/
+
+# Whole text of each Blue Book section, for reading locally (not ours to publish)
+tests/bluebookRules/fullText/

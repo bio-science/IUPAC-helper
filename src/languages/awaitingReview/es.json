@@ -1,0 +1,262 @@
+{
+  "language": {
+    "nativeName": "Español",
+    "flag": "es"
+  },
+  "languageNames": {
+    "cy": "Galés",
+    "de": "Alemán",
+    "en-GB": "Inglés",
+    "es": "Español",
+    "ja": "Japonés",
+    "zh-CN": "Chino"
+  },
+  "text": {
+    "app": {
+      "title": "Asistente de nomenclatura IUPAC",
+      "subtitle": "Dibuja o escribe un alcano, alqueno, haloalcano, alcohol, aldehído, cetona o ácido carboxílico para ver su nombre IUPAC y luego ponte a prueba."
+    },
+    "languagePicker": {
+      "buttonLabel": "Idioma: {language}",
+      "listLabel": "Elige un idioma",
+      "couldNotLoad": "No se ha podido descargar ese idioma. Comprueba tu conexión a internet y vuelve a intentarlo."
+    },
+    "installApp": {
+      "button": "Instalar app",
+      "buttonTitle": "Añade IUPAC Helper a tu dispositivo para que funcione sin conexión",
+      "appleNoteLabel": "Instalar IUPAC Helper",
+      "appleNote": "{useOffline} toca Compartir {shareSymbol} (puede que antes tengas que tocar •••) y después {addToHomeScreen}.",
+      "appleUseOffline": "Usa IUPAC Helper sin conexión:",
+      "appleShareSymbol": "Compartir",
+      "appleAddToHomeScreen": "Añadir a pantalla de inicio",
+      "appleGotIt": "Entendido"
+    },
+    "drawingButtons": {
+      "resetView": "Restablecer vista",
+      "resetViewTitle": "Muestra la molécula entera en el centro",
+      "removeAll": "Quitar todo",
+      "removeAllTitle": "Quita la molécula entera (Deshacer la recupera)",
+      "undo": "↶ Deshacer",
+      "undoTitle": "Deshace el último cambio en el dibujo (Ctrl + Z)"
+    },
+    "practise": {
+      "start": "Practicar",
+      "startTitle": "Muestra una molécula al azar con el nombre oculto. Escribe su nombre IUPAC en la casilla bajo el dibujo para comprobarlo y pulsa Siguiente para otra.",
+      "end": "Terminar práctica",
+      "endTitle": "Volver a dibujar y escribir moléculas"
+    },
+    "omnibox": {
+      "placeholder": "Escribe un nombre (p. ej. propan-2-ol) o una fórmula (p. ej. C5H12 o CH3CHClCH3)",
+      "label": "Nombre o fórmula",
+      "isomersLabel": "Isómeros de esta fórmula",
+      "isomerNumber": "Isómero {number}",
+      "drawsButNotIupacName": "Esto dibuja la molécula, pero no es su nombre IUPAC.",
+      "drawsButIupacNameIs": "Esto dibuja la molécula, pero su nombre IUPAC es {name}.",
+      "formulaIsomers": {
+        "one": "{formula} tiene {count} isómero. Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros. Elige uno para dibujarlo:"
+      },
+      "formulaIsomersSomeNotCovered": {
+        "one": "{formula} tiene {count} isómero ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH, que aún no se tratan). Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH, que aún no se tratan). Elige uno para dibujarlo:"
+      },
+      "formulaElementThenNumber": "Las fórmulas se escriben con el elemento y después el número, p. ej. C5H12.",
+      "oxygenOutsideOHNotCoveredYet": "Un O unido a dos carbonos, como en el éter CH3OCH3 o el éster CH3COOCH3, aún no se trata. Por ahora, el oxígeno se trata en grupos OH (alcoholes, p. ej. CH3CH2OH), como el O de un C=O (aldehídos, p. ej. CH3CHO, y cetonas, p. ej. CH3COCH3) y en grupos COOH (ácidos carboxílicos, p. ej. CH3COOH).",
+      "tooManyCarbons": "Por ahora esta herramienta dibuja moléculas de hasta {maxCarbons} carbonos.",
+      "tooManyIsomersToList": "{formula} tiene demasiados isómeros para mostrarlos aquí. Escribe un nombre o una fórmula estructural para dibujar uno.",
+      "notAnAlkaneFormula": {
+        "one": "Los alcanos tienen la fórmula general CnH2n+2, así que {count} carbono tiene como máximo {hydrogenCount} hidrógenos ({formula}). Cada doble enlace C=C quita 2 más.",
+        "other": "Los alcanos tienen la fórmula general CnH2n+2, así que {count} carbonos tienen como máximo {hydrogenCount} hidrógenos ({formula}). Cada doble enlace C=C quita 2 más."
+      },
+      "notAHaloalkaneFormula": {
+        "one": "Cada halógeno ocupa el lugar de un hidrógeno, así que {count} carbono tiene como máximo {hydrogenCount} hidrógenos y halógenos en total (como en {formula}). Cada doble enlace C=C quita 2 más.",
+        "other": "Cada halógeno ocupa el lugar de un hidrógeno, así que {count} carbonos tienen como máximo {hydrogenCount} hidrógenos y halógenos en total (como en {formula}). Cada doble enlace C=C quita 2 más."
+      },
+      "notAnAlcoholFormula": {
+        "one": "Un grupo OH ocupa el lugar de un hidrógeno y trae el suyo propio, así que un alcohol tiene tantos hidrógenos como el alcano: {count} carbono tiene como máximo {hydrogenCount} hidrógenos, contando los de los grupos OH (como en {formula}), y uno menos por cada halógeno. Cada doble enlace C=C, y cada C=O de un aldehído o una cetona, quita 2 más.",
+        "other": "Un grupo OH ocupa el lugar de un hidrógeno y trae el suyo propio, así que un alcohol tiene tantos hidrógenos como el alcano: {count} carbonos tienen como máximo {hydrogenCount} hidrógenos, contando los de los grupos OH (como en {formula}), y uno menos por cada halógeno. Cada doble enlace C=C, y cada C=O de un aldehído o una cetona, quita 2 más."
+      },
+      "howToWriteStructuralFormula": "Escribe una fórmula estructural carbono a carbono, con cada cadena lateral entre paréntesis después del carbono al que está unida, cada halógeno, OH u O después de su carbono y = para un doble enlace, p. ej. CH3CH(CH3)CH=CH2, CH3CHClCH3, CH3CH(OH)CH3 o CH3CH2CHO.",
+      "ringInStructuralFormula": "Esto parece un anillo: a dos carbonos les falta un enlace a cada uno, así que estarían unidos entre sí. Un anillo no se puede escribir como fórmula estructural en una sola línea, así que escribe su nombre, p. ej. cyclohexane o methylcyclopentane, o dibuja la cadena y une sus extremos.",
+      "carbonNeedsFourBonds": {
+        "one": "El carbono {carbonNumber} ({group}) formaría {count} enlace, pero cada carbono forma exactamente 4.",
+        "other": "El carbono {carbonNumber} ({group}) formaría {count} enlaces, pero cada carbono forma exactamente 4."
+      },
+      "groupCannotBeInAnAlkane": {
+        "one": "{group} no se puede leer como cadena lateral: escrita como fórmula, una cadena lateral debe ser un grupo alquilo, en el que {count} carbono tiene {hydrogenCount} hidrógenos ({alkylGroup}). Escribe una cadena lateral con doble enlace carbono a carbono, p. ej. (CH=CH2).",
+        "other": "{group} no se puede leer como cadena lateral: escrita como fórmula, una cadena lateral debe ser un grupo alquilo, en el que {count} carbonos tienen {hydrogenCount} hidrógenos ({alkylGroup}). Escribe una cadena lateral con doble enlace carbono a carbono, p. ej. (CH=CH2)."
+      },
+      "formulaAlkeneIsomers": {
+        "one": "{formula} tiene {count} isómero, con un doble enlace C=C o un anillo. Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros, cada uno con un doble enlace C=C o un anillo. Elige uno para dibujarlo:"
+      },
+      "formulaAlkeneIsomersSomeNotCovered": {
+        "one": "{formula} tiene {count} isómero, con un doble enlace C=C o un anillo ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH aún no están incluidos). Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros, cada uno con un doble enlace C=C o un anillo ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH aún no están incluidos). Elige uno para dibujarlo:"
+      },
+      "formulaPolyeneIsomers": {
+        "one": "{formula} tiene {count} isómero, con {doubleBondCount} dobles enlaces C=C, o un anillo en lugar de uno de ellos (los isómeros con más anillos o con triples enlaces C≡C aún no están incluidos). Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros, cada uno con {doubleBondCount} dobles enlaces C=C, o un anillo en lugar de uno de ellos (los isómeros con más anillos o con triples enlaces C≡C aún no están incluidos). Elige uno para dibujarlo:"
+      },
+      "formulaPolyeneIsomersSomeNotCovered": {
+        "one": "{formula} tiene {count} isómero, con {doubleBondCount} dobles enlaces C=C, o un anillo en lugar de uno de ellos ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH, o con un anillo de benceno, y los isómeros con más anillos o con triples enlaces C≡C, aún no están incluidos). Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros, cada uno con {doubleBondCount} dobles enlaces C=C, o un anillo en lugar de uno de ellos ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH, o con un anillo de benceno, y los isómeros con más anillos o con triples enlaces C≡C, aún no están incluidos). Elige uno para dibujarlo:"
+      },
+      "formulaAlcoholIsomers": {
+        "one": "{formula} tiene {count} isómero alcohol (los éteres aún no se tratan, y los alcoholes con dos grupos OH en un mismo carbono se omiten, porque son inestables). Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros alcohol (los éteres aún no se tratan, y los alcoholes con dos grupos OH en un mismo carbono se omiten, porque son inestables). Elige uno para dibujarlo:"
+      },
+      "formulaAlcoholIsomersSomeNotCovered": {
+        "one": "{formula} tiene {count} isómero alcohol ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH, y los éteres, aún no se tratan; los alcoholes con dos grupos OH en un mismo carbono se omiten, porque son inestables). Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros alcohol ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH, y los éteres, aún no se tratan; los alcoholes con dos grupos OH en un mismo carbono se omiten, porque son inestables). Elige uno para dibujarlo:"
+      },
+      "formulaCarbonylAndAlcoholIsomers": {
+        "one": "{formula} tiene {count} isómero alcohol, aldehído, cetona o ácido carboxílico, de cadena abierta o con un anillo (los éteres, ésteres e isómeros con más anillos aún no se tratan, y los alcoholes con OH en un carbono de un C=C o con dos grupos OH en un mismo carbono se omiten, porque son inestables). Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros alcohol, aldehído, cetona y ácido carboxílico, de cadena abierta o con un anillo (los éteres, ésteres e isómeros con más anillos aún no se tratan, y los alcoholes con OH en un carbono de un C=C o con dos grupos OH en un mismo carbono se omiten, porque son inestables). Elige uno para dibujarlo:"
+      },
+      "formulaCarbonylAndAlcoholIsomersSomeNotCovered": {
+        "one": "{formula} tiene {count} isómero alcohol, aldehído, cetona o ácido carboxílico, de cadena abierta o con un anillo ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH, y los éteres, ésteres e isómeros con más anillos, aún no se tratan; los alcoholes con OH en un carbono de un C=C o con dos grupos OH en un mismo carbono se omiten, porque son inestables). Elige uno para dibujarlo:",
+        "other": "{formula} tiene {count} isómeros alcohol, aldehído, cetona y ácido carboxílico, de cadena abierta o con un anillo ({notCoveredCount} más con cadenas laterales ramificadas o que llevan un halógeno o un grupo OH, y los éteres, ésteres e isómeros con más anillos, aún no se tratan; los alcoholes con OH en un carbono de un C=C o con dos grupos OH en un mismo carbono se omiten, porque son inestables). Elige uno para dibujarlo:"
+      },
+      "noOxygenCompoundIsomers": "{formula} no tiene isómeros alcohol, aldehído, cetona ni ácido carboxílico estables de cadena abierta o con un anillo (los alcoholes con OH en un carbono de un C=C, o con dos grupos OH en un mismo carbono, son inestables). Puede ser un éter o un éster, que aún no se tratan.",
+      "tooFewHydrogensForOneRing": "{formula} tiene muy pocos hidrógenos para una cadena abierta o un solo anillo: necesitaría más de un anillo o un triple enlace C≡C, que aún no están incluidos.",
+      "carbonNeedsFourBondsMissingDoubleBond": {
+        "one": "El carbono {carbonNumber} ({group}) formaría {count} enlace, pero cada carbono forma exactamente 4. Para un doble enlace, escribe =, p. ej. CH2=CHCH3.",
+        "other": "El carbono {carbonNumber} ({group}) formaría {count} enlaces, pero cada carbono forma exactamente 4. Para un doble enlace, escribe =, p. ej. CH2=CHCH3."
+      }
+    },
+    "readingNames": {
+      "notRecognised": "Esta herramienta aún no reconoce ese nombre. Prueba con un nombre como 2-methylbutane, but-1-ene, 2-chloropropane, propan-2-ol o propanal, o una fórmula como C5H12.",
+      "tooManyLocants": "«{group}» tiene demasiados localizadores.",
+      "wrongMultiplyingPrefix": {
+        "one": "«{group}» tiene {count} localizador, así que debería ser «{correctedGroup}».",
+        "other": "«{group}» tiene {count} localizadores, así que debería ser «{correctedGroup}»."
+      },
+      "locantNotOnChain": "El localizador {locant} no está en la cadena: una cadena de {chainLength} carbonos se numera del 1 al {chainLength}.",
+      "sideChainNeedsLocant": "Cada cadena lateral necesita un localizador (un número de posición) delante, p. ej. 2-methylpropane.",
+      "halogenNeedsLocant": "Pon un localizador (un número de posición) a cada halógeno, p. ej. 1-chloropropane o 2-chloropropane. Los localizadores solo se omiten cuando el halógeno solo puede ir en un sitio, como en chloroethane.",
+      "hydroxyNeedsLocant": "Pon un localizador (un número de posición) al grupo OH, p. ej. propan-1-ol o propan-2-ol. Los localizadores solo se omiten cuando el OH solo puede ir en un sitio, como en ethanol, y en cuanto hace falta alguno, se escriben todos, como en 2-chloroethan-1-ol.",
+      "halogenPrefixes": "En un nombre, un halógeno se escribe como prefijo terminado en -o: fluoro, chloro, bromo o iodo, p. ej. 2-chloropropane.",
+      "carbonWouldHaveTooManyBonds": "El carbono {locant} tendría más de 4 enlaces.",
+      "doubleBondNotOnChain": "No hay un enlace {locant} para un doble enlace: en una cadena de {chainLength} carbonos los enlaces se numeran del 1 al {lastLocant}.",
+      "ringTooSmall": "Un anillo necesita al menos {smallestRingSize} carbonos, así que no hay anillo de {carbonCount}: el más pequeño es cyclopropane.",
+      "ringNeedsCarbaldehydeOrCarboxylicAcid": "El carbono de un grupo CHO o COOH no puede ser uno de los carbonos del anillo, así que un anillo no lleva -al ni -oic acid. Nombra el grupo como sufijo con su propio carbono: -carbaldehyde para CHO, como en cyclohexanecarbaldehyde, y -carboxylic acid para COOH, como en cyclohexanecarboxylic acid.",
+      "carbaldehydeAndCarboxylicAcidOnlyOnRings": "-carbaldehyde, -carboxylic acid y el prefijo formyl son para grupos CHO y COOH unidos a un anillo. En una cadena, el carbono del grupo forma parte de la cadena, así que se nombra con -al o -oic acid: p. ej. propanal, propanoic acid (no ethanecarbaldehyde ni ethanecarboxylic acid).",
+      "ringGroupNeedsLocant": "Pon un localizador (un número de posición) a cada grupo -carbaldehyde o -carboxylic acid cuando haya dos o más, p. ej. cyclohexane-1,2-dicarboxylic acid o cyclohexane-1,3-dicarboxylic acid.",
+      "doubleBondLocantRepeated": "El localizador {locant} aparece dos veces: cada doble enlace necesita su propio localizador.",
+      "doubleBondNeedsLocant": "Indica dónde está el doble enlace con un localizador, p. ej. but-1-eno o but-2-eno, o prop-2-enal.",
+      "tooManyAldehydeGroups": "\"{group}\" tiene demasiados grupos CHO: un grupo CHO siempre está al final de una cadena, así que una cadena tiene como máximo dos (-dial, p. ej. butanedial), y el metano solo uno (methanal).",
+      "aldehydeAtChainEnd": "En \"{group}\", el grupo CHO no está al final de la cadena. El carbono de -al siempre es el carbono 1 (y el último carbono en -dial), así que sus localizadores se omiten: p. ej. propanal, butanedial.",
+      "tooManyAcidGroups": "\"{group}\" tiene demasiados grupos COOH: un grupo COOH siempre está al final de una cadena, así que una cadena tiene como máximo dos (-dioic acid, p. ej. butanedioic acid), y el metano solo uno (methanoic acid).",
+      "acidAtChainEnd": "En \"{group}\", el grupo COOH no está al final de la cadena. El carbono de -oic acid siempre es el carbono 1 (y el último carbono en -dioic acid), así que sus localizadores se omiten: p. ej. propanoic acid, butanedioic acid.",
+      "ketoneNeedsLocant": "Pon un localizador (un número de posición) al C=O de la cetona, tanto si se escribe -one como con el prefijo oxo: p. ej. pentan-2-one o pentan-3-one, y 3-oxobutanal. La IUPAC lo mantiene incluso cuando el C=O solo puede ir en un sitio, como en propan-2-one y butan-2-one (que a menudo se escriben propanone y butanone).",
+      "ketoneAtChainEnd": "En \"{group}\", el C=O está en un carbono del extremo de la cadena. Ahí lleva un hidrógeno, así que es un aldehído y se nombra con -al: p. ej. propanal, no propan-1-one. El C=O de una cetona siempre está en un carbono del medio de la cadena, como en propan-2-one.",
+      "acidNeedsTheWordAcid": "El nombre de un ácido carboxílico termina en la palabra aparte acid, tras un espacio: p. ej. ethanoic acid, butanedioic acid."
+    },
+    "naming": {
+      "nothingDrawn": "Todavía no se ha dibujado nada.",
+      "notASingleChain": "Este dibujo está en piezas separadas. Únelas en una sola molécula para nombrarla.",
+      "moreThanOneRing": "Esta molécula tiene más de un anillo. Por ahora solo se pueden nombrar moléculas con un solo anillo, como cyclohexane o methylcyclopentane.",
+      "benzeneRingNotCovered": "Este anillo de seis carbonos tiene tres dobles enlaces, uno en cada enlace alterno: es un anillo de benceno. El benceno y sus compuestos (arenos) se nombran de otra manera y aún no están incluidos.",
+      "ringSideChainNotCovered": "Aquí un anillo forma parte de una cadena lateral. Un anillo solo se nombra como cadena lateral cuando es toda la cadena lateral, sin dobles enlaces y sin nada unido, como el grupo cyclohexyl en cyclohexylmethanol. Los demás aún no están incluidos.",
+      "chainTooLong": "La cadena más larga tiene {chainLength} carbonos. Por ahora, esta herramienta nombra cadenas de hasta {maxCarbons} carbonos.",
+      "branchedSideChain": "Una de las cadenas laterales está ramificada (por ejemplo, un grupo propan-2-ilo). Aún no se pueden nombrar cadenas laterales ramificadas.",
+      "groupOnSideChain": "Hay un halógeno o un grupo OH en una de las cadenas laterales (por ejemplo, un grupo clorometilo o hidroximetilo). Aún no se pueden nombrar cadenas laterales con estos grupos.",
+      "tooManyOfOneSideChain": "Hay más de {maxCount} cadenas laterales del mismo tipo, y esta herramienta aún no puede nombrarlo.",
+      "carbonylCompoundNotCovered": "Esta molécula tiene un grupo C=O que no forma parte de un aldehído (-CHO), una cetona ni un ácido carboxílico (-COOH): por ejemplo, un cloruro de acilo (-COCl). Estos aún no se tratan: por ahora, un C=O solo se puede nombrar en un carbono cuyos otros enlaces son enlaces sencillos a hidrógenos o carbonos, o, en -COOH, a un grupo OH."
+    },
+    "diagramTitle": {
+      "showName": "Mostrar nombre",
+      "showNameTitle": "Muestra el nombre IUPAC",
+      "newMolecule": "Nueva molécula",
+      "newMoleculeTitle": "Otra molécula para nombrar"
+    },
+    "addAtom": {
+      "title": "Añadir átomo",
+      "carbon": "Carbono",
+      "carbonTitle": "Mientras está activado, cada clic en el dibujo añade un carbono. Vuelve a pulsar o pulsa Esc para parar. Ctrl + clic añade uno en cualquier momento.",
+      "hydrogen": "Hidrógeno",
+      "hydrogenTitle": "Los hidrógenos se añaden automáticamente para que cada carbono tenga 4 enlaces.",
+      "hydroxylGroup": "Hidroxilo",
+      "hydroxylGroupTitle": "OH, el grupo hidroxilo de un alcohol: mientras está activado, haz clic en un hidrógeno para cambiarlo por OH, o en un halógeno para convertirlo en OH. Vuelve a pulsar o pulsa Esc para parar.",
+      "carbonylOxygen": "Carbonilo",
+      "carbonylOxygenTitle": "=O, el oxígeno de un grupo C=O (carbonilo): mientras está activado, haz clic en un hidrógeno para cambiarlo, junto con otro hidrógeno del mismo carbono, por =O. En el carbono del extremo de una cadena, esto forma un aldehído, -CHO, y en un carbono del medio, una cetona, como en CH3COCH3. Vuelve a pulsar o pulsa Esc para parar.",
+      "halogens": "Halógenos",
+      "fluorine": "Flúor",
+      "chlorine": "Cloro",
+      "bromine": "Bromo",
+      "iodine": "Yodo",
+      "halogenTitle": "{element}: mientras está activado, haz clic en un hidrógeno para cambiarlo por {symbol}, o en otro halógeno para convertirlo en {symbol}. Vuelve a pulsar o pulsa Esc para parar.",
+      "erase": "Borrar",
+      "eraseTitle": "Mientras está activado, haz clic en un carbono, un enlace o un grupo (halógeno, OH o =O) para quitarlo. Vuelve a pulsar o pulsa Esc para parar. El clic derecho borra en cualquier momento.",
+      "makeSmaller": "Hacer más pequeño el menú Añadir átomo",
+      "makeBigger": "Hacer más grande el menú Añadir átomo",
+      "smaller": "Más pequeño",
+      "bigger": "Más grande"
+    },
+    "view": {
+      "label": "Cómo mostrar la molécula",
+      "displayed": "Desarrollada",
+      "displayedTitle": "Se muestran todos los átomos y enlaces",
+      "skeletal": "Esquelética",
+      "skeletalTitle": "Solo líneas: cada vértice y cada extremo de línea es un carbono"
+    },
+    "drawing": {
+      "displayedFormulaLabel": "Fórmula desarrollada de la molécula",
+      "skeletalFormulaLabel": "Fórmula esquelética de la molécula",
+      "emptyDrawing": "Mantén pulsado Ctrl y haz clic aquí para colocar un átomo de carbono (o pulsa Carbono a la izquierda), o escribe un nombre o una fórmula en la casilla de arriba.",
+      "clickToAddCarbon": "Clic para añadir un carbono",
+      "clickToAddCarbonUntilEsc": "Clic para añadir un carbono (Esc para parar)",
+      "erasingUntilEsc": "Borrando (Esc para parar)",
+      "clickToErase": "Clic para borrar",
+      "dragToMoveCarbon": "Arrastra para mover · clic derecho para borrar",
+      "dragToTurnBond": "Arrastra para girar · clic derecho para borrar",
+      "ctrlClickForCarbon": "Ctrl + clic para añadir un carbono",
+      "bondTitle": "Arrastra para girar este enlace. Ctrl + clic para hacerlo doble o sencillo. Clic derecho para quitar su lado más pequeño.",
+      "bondTitleWhileErasing": "Clic para quitar el lado más pequeño de este enlace",
+      "carbonTitle": "Arrastra para mover este carbono. Ctrl + arrastrar hasta otro carbono para unirlos. Clic derecho para quitarlo.",
+      "carbonTitleWhileErasing": "Clic para quitar este carbono",
+      "releaseToPlaceCarbon": "Suelta para colocar este carbono",
+      "newCarbonReplacesHydrogen": "El nuevo carbono sustituye a este hidrógeno",
+      "tooCloseToAnotherCarbon": "Demasiado cerca de otro carbono.",
+      "everyCarbonHasFourBonds": "Todos los carbonos ya tienen 4 enlaces.",
+      "clickToMakeDoubleBond": "Haz clic para hacer un doble enlace",
+      "clickToMakeSingleBond": "Haz clic para hacer un enlace sencillo",
+      "cannotMakeDoubleBond": "No puede ser doble: un carbono aquí ya tiene 4 enlaces",
+      "releaseToCloseRing": "Suelta para unir estos carbonos y cerrar un anillo",
+      "releaseToJoinCarbons": "Suelta para unir estos carbonos",
+      "carbonsAlreadyBonded": "Estos carbonos ya están enlazados",
+      "carbonHasNoRoomToJoin": "No se pueden unir: un carbono aquí ya tiene 4 enlaces",
+      "ringBondCannotTurn": "Los enlaces de un anillo no se pueden girar · clic derecho para abrir el anillo",
+      "clickToSwapHydrogenForGroup": "Clic para cambiar este H por {symbol}",
+      "clickToSwapHydrogensForCarbonyl": "Clic para cambiar este H y otro por =O",
+      "clickToChangeGroup": "Clic para cambiarlo a {symbol}",
+      "clickToChangeToCarbonyl": "Clic para convertirlo en =O",
+      "carbonylNeedsTwoHydrogens": "=O ocupa el lugar de 2 hidrógenos, y este carbono solo tiene 1",
+      "clickToPutHydrogenBack": "Clic para volver a poner el H",
+      "pointAtHydrogenUntilEsc": "Señala un hidrógeno para cambiarlo por {symbol} (Esc para parar)",
+      "rightClickToRemoveGroup": "Clic derecho para quitar",
+      "groupTitle": "Clic derecho para quitar este grupo. Vuelven a ponerse hidrógenos en su lugar.",
+      "groupTitleWhileErasing": "Clic para quitar este grupo"
+    },
+    "answer": {
+      "label": "Tu nombre para esta molécula:",
+      "correct": "Correcto",
+      "notCorrect": "Incorrecto",
+      "next": "Siguiente",
+      "nextTitle": "Otra molécula para nombrar (o pulsa Intro)",
+      "hintPunctuation": "¡Casi! Revisa la puntuación: las comas van entre números (2,3-), los guiones entre números y palabras (2-methyl), y no hay espacios, salvo antes de la palabra acid (ethanoic acid).",
+      "hintBracketsOnMethane": "¡Casi! En el metano, cada halógeno después del primero va entre paréntesis, p. ej. trichloro(fluoro)methane.",
+      "hintLeaveOutLocants": "Ese nombre describe esta molécula, pero aquí los localizadores se omiten: cada grupo solo puede ir en un sitio, como en chloroethane (no 1-chloroethane).",
+      "hintHydroxyAsSuffix": "En un alcohol, el grupo OH se indica con la terminación -ol, no con el prefijo hydroxy: p. ej. propan-2-ol, no 2-hydroxypropane.",
+      "hintKetoneAsSuffix": "En una cetona, el C=O se indica con la terminación -one, no con el prefijo oxo: p. ej. propan-2-one, no 2-oxopropane. Oxo solo se usa cuando también hay un grupo CHO o COOH, como en 3-oxobutanal y 3-oxobutanoic acid.",
+      "hintAldehydeLocant": "El grupo CHO de un aldehído siempre está en el carbono 1 (y en el último carbono en -dial), así que los localizadores de -al se omiten: p. ej. propanal, no propan-1-al, y butanedial, no butane-1,4-dial.",
+      "hintCarboxylicAcidLocant": "El grupo COOH de un ácido carboxílico siempre está en el carbono 1 (y en el último carbono en -dioic acid), así que los localizadores de -oic acid se omiten: p. ej. ethanoic acid, no ethan-1-oic acid, y butanedioic acid, no butane-1,4-dioic acid.",
+      "hintNotTheLongestChain": "Ese nombre describe esta molécula, pero no se basa en la cadena principal correcta: la cadena de carbonos más larga o, en un aldehído, una cetona o un alcohol, la cadena más larga con el mayor número posible de grupos CHO (o, si no hay, de grupos C=O de cetona, o, si tampoco hay, de grupos OH).",
+      "hintGroupIdenticalSideChains": "Agrupa las cadenas laterales iguales con di-, tri-, tetra- (p. ej. 2,3-dimethyl).",
+      "hintAlphabeticalOrder": "Escribe las cadenas laterales y los halógenos en orden alfabético (sin tener en cuenta di-, tri- al ordenar), p. ej. 2-bromo-3-methyl.",
+      "hintLowestLocants": "Ese nombre describe esta molécula, pero la numeración no es correcta. Numera la cadena desde el extremo que da los localizadores más bajos: primero a los grupos CHO (-al) o, si no hay, a los grupos OH (-ol), luego a los dobles enlaces y luego a las cadenas laterales, los halógenos y los demás grupos juntos."
+    },
+    "footer": "Herramienta de aprendizaje gratuita y de código abierto, aún en desarrollo. Se ofrece tal cual, sin garantía de que todos los nombres sean correctos. Los nombres siguen las Recomendaciones de la IUPAC de 2013."
+  }
+}

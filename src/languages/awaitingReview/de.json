@@ -1,0 +1,262 @@
+{
+  "language": {
+    "nativeName": "Deutsch",
+    "flag": "de"
+  },
+  "languageNames": {
+    "cy": "Walisisch",
+    "de": "Deutsch",
+    "en-GB": "Englisch",
+    "es": "Spanisch",
+    "ja": "Japanisch",
+    "zh-CN": "Chinesisch"
+  },
+  "text": {
+    "app": {
+      "title": "IUPAC-Namenshelfer",
+      "subtitle": "Zeichne oder tippe ein Alkan, Alken, Halogenalkan, einen Alkohol, ein Aldehyd, ein Keton oder eine Carbonsäure, um den IUPAC-Namen zu sehen, und teste dich dann selbst."
+    },
+    "languagePicker": {
+      "buttonLabel": "Sprache: {language}",
+      "listLabel": "Sprache wählen",
+      "couldNotLoad": "Diese Sprache konnte nicht heruntergeladen werden. Prüfe deine Internetverbindung und versuche es erneut."
+    },
+    "installApp": {
+      "button": "App installieren",
+      "buttonTitle": "IUPAC Helper auf deinem Gerät installieren, damit es auch offline funktioniert",
+      "appleNoteLabel": "IUPAC Helper installieren",
+      "appleNote": "{useOffline} Tippe auf „Teilen“ {shareSymbol} (eventuell musst du zuerst auf ••• tippen) und dann auf {addToHomeScreen}.",
+      "appleUseOffline": "IUPAC Helper offline nutzen:",
+      "appleShareSymbol": "Teilen",
+      "appleAddToHomeScreen": "Zum Home-Bildschirm",
+      "appleGotIt": "Verstanden"
+    },
+    "drawingButtons": {
+      "resetView": "Ansicht zurücksetzen",
+      "resetViewTitle": "Das ganze Molekül in der Mitte zeigen",
+      "removeAll": "Alles entfernen",
+      "removeAllTitle": "Das ganze Molekül entfernen („Rückgängig“ holt es zurück)",
+      "undo": "↶ Rückgängig",
+      "undoTitle": "Die letzte Änderung an der Zeichnung rückgängig machen (Strg + Z)"
+    },
+    "practise": {
+      "start": "Üben",
+      "startTitle": "Zeigt ein zufälliges Molekül mit verborgenem Namen. Tippe seinen IUPAC-Namen in das Feld unter der Zeichnung, um ihn zu prüfen, und drücke dann „Weiter“ für das nächste.",
+      "end": "Üben beenden",
+      "endTitle": "Zurück zum Zeichnen und Eintippen von Molekülen"
+    },
+    "omnibox": {
+      "placeholder": "Tippe einen Namen (z. B. propan-2-ol) oder eine Formel (z. B. C5H12 oder CH3CHClCH3)",
+      "label": "Name oder Formel",
+      "isomersLabel": "Isomere dieser Formel",
+      "isomerNumber": "Isomer {number}",
+      "drawsButNotIupacName": "Damit wird das Molekül gezeichnet, aber das ist nicht sein IUPAC-Name.",
+      "drawsButIupacNameIs": "Damit wird das Molekül gezeichnet, aber sein IUPAC-Name ist {name}.",
+      "formulaIsomers": {
+        "one": "{formula} hat {count} Isomer. Wähle eines aus, um es zu zeichnen:",
+        "other": "{formula} hat {count} Isomere. Wähle eines aus, um es zu zeichnen:"
+      },
+      "formulaIsomersSomeNotCovered": {
+        "one": "{formula} hat {count} Isomer ({notCoveredCount} weitere mit verzweigten Seitenketten oder Seitenketten mit einem Halogen oder einer OH-Gruppe sind noch nicht abgedeckt). Wähle eines zum Zeichnen:",
+        "other": "{formula} hat {count} Isomere ({notCoveredCount} weitere mit verzweigten Seitenketten oder Seitenketten mit einem Halogen oder einer OH-Gruppe sind noch nicht abgedeckt). Wähle eines zum Zeichnen:"
+      },
+      "formulaElementThenNumber": "Formeln werden als Element und dann Anzahl geschrieben, z. B. C5H12.",
+      "oxygenOutsideOHNotCoveredYet": "Ein O, das an zwei Kohlenstoffatome gebunden ist, wie im Ether CH3OCH3 oder im Ester CH3COOCH3, wird noch nicht abgedeckt. Bisher wird Sauerstoff in OH-Gruppen (Alkohole, z. B. CH3CH2OH), als O von C=O (Aldehyde, z. B. CH3CHO, und Ketone, z. B. CH3COCH3) und in COOH-Gruppen (Carbonsäuren, z. B. CH3COOH) abgedeckt.",
+      "tooManyCarbons": "Dieses Werkzeug zeichnet vorerst Moleküle mit bis zu {maxCarbons} Kohlenstoffatomen.",
+      "tooManyIsomersToList": "{formula} hat zu viele Isomere, um sie hier aufzulisten. Gib einen Namen oder eine Strukturformel ein, um eines zu zeichnen.",
+      "notAnAlkaneFormula": {
+        "one": "Alkane haben die allgemeine Formel CnH2n+2, also hat {count} Kohlenstoffatom höchstens {hydrogenCount} Wasserstoffatome ({formula}). Jede C=C-Doppelbindung nimmt 2 weitere weg.",
+        "other": "Alkane haben die allgemeine Formel CnH2n+2, also haben {count} Kohlenstoffatome höchstens {hydrogenCount} Wasserstoffatome ({formula}). Jede C=C-Doppelbindung nimmt 2 weitere weg."
+      },
+      "notAHaloalkaneFormula": {
+        "one": "Jedes Halogen nimmt den Platz eines Wasserstoffatoms ein, also hat {count} Kohlenstoffatom höchstens {hydrogenCount} Wasserstoff- und Halogenatome zusammen (wie in {formula}). Jede C=C-Doppelbindung nimmt 2 weitere weg.",
+        "other": "Jedes Halogen nimmt den Platz eines Wasserstoffatoms ein, also haben {count} Kohlenstoffatome höchstens {hydrogenCount} Wasserstoff- und Halogenatome zusammen (wie in {formula}). Jede C=C-Doppelbindung nimmt 2 weitere weg."
+      },
+      "notAnAlcoholFormula": {
+        "one": "Eine OH-Gruppe ersetzt ein Wasserstoffatom und bringt ihr eigenes mit, also hat ein Alkohol so viele Wasserstoffatome wie das Alkan: {count} Kohlenstoffatom hat höchstens {hydrogenCount} Wasserstoffatome, die in OH-Gruppen mitgezählt (wie in {formula}), und eines weniger für jedes Halogen. Jede C=C-Doppelbindung und jedes C=O eines Aldehyds oder Ketons nimmt 2 weitere weg.",
+        "other": "Eine OH-Gruppe ersetzt ein Wasserstoffatom und bringt ihr eigenes mit, also hat ein Alkohol so viele Wasserstoffatome wie das Alkan: {count} Kohlenstoffatome haben höchstens {hydrogenCount} Wasserstoffatome, die in OH-Gruppen mitgezählt (wie in {formula}), und eines weniger für jedes Halogen. Jede C=C-Doppelbindung und jedes C=O eines Aldehyds oder Ketons nimmt 2 weitere weg."
+      },
+      "howToWriteStructuralFormula": "Schreibe eine Strukturformel Kohlenstoffatom für Kohlenstoffatom, jede Seitenkette in Klammern nach dem Kohlenstoffatom, an dem sie hängt, jedes Halogen, OH oder O nach seinem Kohlenstoffatom und = für eine Doppelbindung, z. B. CH3CH(CH3)CH=CH2, CH3CHClCH3, CH3CH(OH)CH3 oder CH3CH2CHO.",
+      "ringInStructuralFormula": "Das sieht nach einem Ring aus: Zwei Kohlenstoffatomen fehlt je eine Bindung, also wären sie miteinander verbunden. Ein Ring lässt sich nicht als Strukturformel in einer Zeile schreiben. Gib stattdessen seinen Namen ein, z. B. cyclohexane oder methylcyclopentane, oder zeichne die Kette und verbinde ihre Enden.",
+      "carbonNeedsFourBonds": {
+        "one": "Kohlenstoffatom {carbonNumber} ({group}) hätte {count} Bindung, aber jedes Kohlenstoffatom hat genau 4.",
+        "other": "Kohlenstoffatom {carbonNumber} ({group}) hätte {count} Bindungen, aber jedes Kohlenstoffatom hat genau 4."
+      },
+      "groupCannotBeInAnAlkane": {
+        "one": "{group} kann nicht als Seitenkette gelesen werden: Als Formel geschrieben muss eine Seitenkette eine Alkylgruppe sein, in der {count} Kohlenstoffatom {hydrogenCount} Wasserstoffatome hat ({alkylGroup}). Schreibe eine Seitenkette mit Doppelbindung Atom für Atom, z. B. (CH=CH2).",
+        "other": "{group} kann nicht als Seitenkette gelesen werden: Als Formel geschrieben muss eine Seitenkette eine Alkylgruppe sein, in der {count} Kohlenstoffatome {hydrogenCount} Wasserstoffatome haben ({alkylGroup}). Schreibe eine Seitenkette mit Doppelbindung Atom für Atom, z. B. (CH=CH2)."
+      },
+      "formulaAlkeneIsomers": {
+        "one": "{formula} hat {count} Isomer mit einer C=C-Doppelbindung oder einem Ring. Wähle eines aus, um es zu zeichnen:",
+        "other": "{formula} hat {count} Isomere mit je einer C=C-Doppelbindung oder einem Ring. Wähle eines aus, um es zu zeichnen:"
+      },
+      "formulaAlkeneIsomersSomeNotCovered": {
+        "one": "{formula} hat {count} Isomer mit einer C=C-Doppelbindung oder einem Ring ({notCoveredCount} weitere mit Seitenketten, die verzweigt sind oder ein Halogen oder eine OH-Gruppe tragen, sind noch nicht abgedeckt). Wähle eines aus, um es zu zeichnen:",
+        "other": "{formula} hat {count} Isomere mit je einer C=C-Doppelbindung oder einem Ring ({notCoveredCount} weitere mit Seitenketten, die verzweigt sind oder ein Halogen oder eine OH-Gruppe tragen, sind noch nicht abgedeckt). Wähle eines aus, um es zu zeichnen:"
+      },
+      "formulaPolyeneIsomers": {
+        "one": "{formula} hat {count} Isomer mit {doubleBondCount} C=C-Doppelbindungen oder einem Ring anstelle einer davon (Isomere mit mehr Ringen oder C≡C-Dreifachbindungen sind noch nicht abgedeckt). Wähle eines aus, um es zu zeichnen:",
+        "other": "{formula} hat {count} Isomere mit je {doubleBondCount} C=C-Doppelbindungen oder einem Ring anstelle einer davon (Isomere mit mehr Ringen oder C≡C-Dreifachbindungen sind noch nicht abgedeckt). Wähle eines aus, um es zu zeichnen:"
+      },
+      "formulaPolyeneIsomersSomeNotCovered": {
+        "one": "{formula} hat {count} Isomer mit {doubleBondCount} C=C-Doppelbindungen oder einem Ring anstelle einer davon ({notCoveredCount} weitere mit Seitenketten, die verzweigt sind oder ein Halogen oder eine OH-Gruppe tragen, oder mit einem Benzolring sowie Isomere mit mehr Ringen oder C≡C-Dreifachbindungen sind noch nicht abgedeckt). Wähle eines aus, um es zu zeichnen:",
+        "other": "{formula} hat {count} Isomere mit je {doubleBondCount} C=C-Doppelbindungen oder einem Ring anstelle einer davon ({notCoveredCount} weitere mit Seitenketten, die verzweigt sind oder ein Halogen oder eine OH-Gruppe tragen, oder mit einem Benzolring sowie Isomere mit mehr Ringen oder C≡C-Dreifachbindungen sind noch nicht abgedeckt). Wähle eines aus, um es zu zeichnen:"
+      },
+      "formulaAlcoholIsomers": {
+        "one": "{formula} hat {count} Alkohol-Isomer (Ether sind noch nicht abgedeckt, und Alkohole mit zwei OH-Gruppen an einem Kohlenstoffatom fehlen, weil sie instabil sind). Wähle eines zum Zeichnen:",
+        "other": "{formula} hat {count} Alkohol-Isomere (Ether sind noch nicht abgedeckt, und Alkohole mit zwei OH-Gruppen an einem Kohlenstoffatom fehlen, weil sie instabil sind). Wähle eines zum Zeichnen:"
+      },
+      "formulaAlcoholIsomersSomeNotCovered": {
+        "one": "{formula} hat {count} Alkohol-Isomer ({notCoveredCount} weitere mit verzweigten Seitenketten oder Seitenketten mit einem Halogen oder einer OH-Gruppe sowie Ether sind noch nicht abgedeckt; Alkohole mit zwei OH-Gruppen an einem Kohlenstoffatom fehlen, weil sie instabil sind). Wähle eines zum Zeichnen:",
+        "other": "{formula} hat {count} Alkohol-Isomere ({notCoveredCount} weitere mit verzweigten Seitenketten oder Seitenketten mit einem Halogen oder einer OH-Gruppe sowie Ether sind noch nicht abgedeckt; Alkohole mit zwei OH-Gruppen an einem Kohlenstoffatom fehlen, weil sie instabil sind). Wähle eines zum Zeichnen:"
+      },
+      "formulaCarbonylAndAlcoholIsomers": {
+        "one": "{formula} hat {count} Alkohol-, Aldehyd-, Keton- oder Carbonsäure-Isomer, offenkettig oder mit einem Ring (Ether, Ester und Isomere mit mehr Ringen sind noch nicht abgedeckt, und Alkohole mit OH an einem C=C-Kohlenstoffatom oder zwei OH-Gruppen an einem Kohlenstoffatom fehlen, weil sie instabil sind). Wähle eines zum Zeichnen:",
+        "other": "{formula} hat {count} Alkohol-, Aldehyd-, Keton- und Carbonsäure-Isomere, offenkettig oder mit einem Ring (Ether, Ester und Isomere mit mehr Ringen sind noch nicht abgedeckt, und Alkohole mit OH an einem C=C-Kohlenstoffatom oder zwei OH-Gruppen an einem Kohlenstoffatom fehlen, weil sie instabil sind). Wähle eines zum Zeichnen:"
+      },
+      "formulaCarbonylAndAlcoholIsomersSomeNotCovered": {
+        "one": "{formula} hat {count} Alkohol-, Aldehyd-, Keton- oder Carbonsäure-Isomer, offenkettig oder mit einem Ring ({notCoveredCount} weitere mit verzweigten Seitenketten oder Seitenketten mit einem Halogen oder einer OH-Gruppe sowie Ether, Ester und Isomere mit mehr Ringen sind noch nicht abgedeckt; Alkohole mit OH an einem C=C-Kohlenstoffatom oder zwei OH-Gruppen an einem Kohlenstoffatom fehlen, weil sie instabil sind). Wähle eines zum Zeichnen:",
+        "other": "{formula} hat {count} Alkohol-, Aldehyd-, Keton- und Carbonsäure-Isomere, offenkettig oder mit einem Ring ({notCoveredCount} weitere mit verzweigten Seitenketten oder Seitenketten mit einem Halogen oder einer OH-Gruppe sowie Ether, Ester und Isomere mit mehr Ringen sind noch nicht abgedeckt; Alkohole mit OH an einem C=C-Kohlenstoffatom oder zwei OH-Gruppen an einem Kohlenstoffatom fehlen, weil sie instabil sind). Wähle eines zum Zeichnen:"
+      },
+      "noOxygenCompoundIsomers": "{formula} hat keine stabilen Alkohol-, Aldehyd-, Keton- oder Carbonsäure-Isomere, die offenkettig sind oder einen Ring haben (Alkohole mit OH an einem C=C-Kohlenstoffatom oder zwei OH-Gruppen an einem Kohlenstoffatom sind instabil). Es könnte ein Ether oder ein Ester sein; diese sind noch nicht abgedeckt.",
+      "tooFewHydrogensForOneRing": "{formula} hat zu wenige Wasserstoffatome für eine offene Kette oder einen einzelnen Ring: Es bräuchte mehr als einen Ring oder eine C≡C-Dreifachbindung, und die sind noch nicht abgedeckt.",
+      "carbonNeedsFourBondsMissingDoubleBond": {
+        "one": "Kohlenstoffatom {carbonNumber} ({group}) hätte {count} Bindung, aber jedes Kohlenstoffatom hat genau 4. Schreibe eine Doppelbindung als =, z. B. CH2=CHCH3.",
+        "other": "Kohlenstoffatom {carbonNumber} ({group}) hätte {count} Bindungen, aber jedes Kohlenstoffatom hat genau 4. Schreibe eine Doppelbindung als =, z. B. CH2=CHCH3."
+      }
+    },
+    "readingNames": {
+      "notRecognised": "Diesen Namen erkennt das Tool noch nicht. Versuche einen Namen wie 2-methylbutane, but-1-ene, 2-chloropropane, propan-2-ol oder propanal oder eine Formel wie C5H12.",
+      "tooManyLocants": "„{group}“ hat zu viele Lokanten.",
+      "wrongMultiplyingPrefix": {
+        "one": "„{group}“ hat {count} Lokanten, also sollte es „{correctedGroup}“ heißen.",
+        "other": "„{group}“ hat {count} Lokanten, also sollte es „{correctedGroup}“ heißen."
+      },
+      "locantNotOnChain": "Lokant {locant} liegt nicht auf der Kette: Eine Kette aus {chainLength} Kohlenstoffatomen ist von 1 bis {chainLength} nummeriert.",
+      "sideChainNeedsLocant": "Jede Seitenkette braucht davor einen Lokanten (eine Positionsnummer), z. B. 2-methylpropane.",
+      "halogenNeedsLocant": "Gib jedem Halogen einen Lokanten (eine Positionsnummer), z. B. 1-chloropropane oder 2-chloropropane. Lokanten fallen nur weg, wenn das Halogen an nur einer Stelle sitzen kann, wie in chloroethane.",
+      "hydroxyNeedsLocant": "Gib der OH-Gruppe einen Lokanten (eine Positionsnummer), z. B. propan-1-ol oder propan-2-ol. Lokanten fallen nur weg, wenn die OH-Gruppe an nur einer Stelle sitzen kann, wie in ethanol, und sobald ein Lokant nötig ist, werden alle geschrieben, wie in 2-chloroethan-1-ol.",
+      "halogenPrefixes": "In einem Namen wird ein Halogen als Präfix auf -o geschrieben: fluoro, chloro, bromo oder iodo, z. B. 2-chloropropane.",
+      "carbonWouldHaveTooManyBonds": "Kohlenstoffatom {locant} hätte mehr als 4 Bindungen.",
+      "doubleBondNotOnChain": "Es gibt keine Bindung {locant} für eine Doppelbindung: In einer Kette aus {chainLength} Kohlenstoffatomen sind die Bindungen von 1 bis {lastLocant} nummeriert.",
+      "ringTooSmall": "Ein Ring braucht mindestens {smallestRingSize} Kohlenstoffatome, also gibt es keinen Ring aus {carbonCount}: Der kleinste ist cyclopropane.",
+      "ringNeedsCarbaldehydeOrCarboxylicAcid": "Das Kohlenstoffatom einer CHO- oder COOH-Gruppe kann nicht zum Ring gehören, daher hat ein Ring kein -al und kein -oic acid. Benenne die Gruppe als Suffix mit ihrem eigenen Kohlenstoffatom: -carbaldehyde für CHO wie in cyclohexanecarbaldehyde und -carboxylic acid für COOH wie in cyclohexanecarboxylic acid.",
+      "carbaldehydeAndCarboxylicAcidOnlyOnRings": "-carbaldehyde, -carboxylic acid und das Präfix formyl sind für CHO- und COOH-Gruppen, die an einen Ring gebunden sind. An einer Kette gehört das Kohlenstoffatom der Gruppe zur Kette, daher wird sie mit -al oder -oic acid benannt: z. B. propanal, propanoic acid (nicht ethanecarbaldehyde oder ethanecarboxylic acid).",
+      "ringGroupNeedsLocant": "Gib jeder -carbaldehyde- oder -carboxylic-acid-Gruppe einen Lokanten (eine Positionsnummer), wenn es zwei oder mehr davon gibt, z. B. cyclohexane-1,2-dicarboxylic acid oder cyclohexane-1,3-dicarboxylic acid.",
+      "doubleBondLocantRepeated": "Der Lokant {locant} steht zweimal da: Jede Doppelbindung braucht ihren eigenen Lokanten.",
+      "doubleBondNeedsLocant": "Gib mit einem Lokanten an, wo die Doppelbindung ist, z. B. But-1-en oder But-2-en, oder prop-2-enal.",
+      "tooManyAldehydeGroups": "\"{group}\" hat zu viele CHO-Gruppen: Eine CHO-Gruppe sitzt immer am Ende einer Kette, also hat eine Kette höchstens zwei (-dial, z. B. butanedial) und Methan nur eine (methanal).",
+      "aldehydeAtChainEnd": "In \"{group}\" sitzt die CHO-Gruppe nicht am Ende der Kette. Das Kohlenstoffatom von -al ist immer C1 (bei -dial auch das letzte), deshalb fallen seine Lokanten weg: z. B. propanal, butanedial.",
+      "tooManyAcidGroups": "\"{group}\" hat zu viele COOH-Gruppen: Eine COOH-Gruppe sitzt immer am Ende einer Kette, also hat eine Kette höchstens zwei (-dioic acid, z. B. butanedioic acid) und Methan nur eine (methanoic acid).",
+      "acidAtChainEnd": "In \"{group}\" sitzt die COOH-Gruppe nicht am Ende der Kette. Das Kohlenstoffatom von -oic acid ist immer C1 (bei -dioic acid auch das letzte), deshalb fallen seine Lokanten weg: z. B. propanoic acid, butanedioic acid.",
+      "ketoneNeedsLocant": "Gib dem C=O des Ketons einen Lokanten (eine Positionsnummer), ob es als -one oder als Vorsilbe oxo geschrieben wird: z. B. pentan-2-one oder pentan-3-one und 3-oxobutanal. Die IUPAC behält ihn auch dort, wo das C=O nur an einer Stelle sitzen kann, wie in propan-2-one und butan-2-one (oft propanone und butanone geschrieben).",
+      "ketoneAtChainEnd": "In \"{group}\" sitzt das C=O an einem Endkohlenstoffatom der Kette. Dort trägt es ein Wasserstoffatom, ist also ein Aldehyd und wird mit -al benannt: z. B. propanal, nicht propan-1-one. Das C=O eines Ketons sitzt immer an einem Kohlenstoffatom in der Mitte der Kette, wie in propan-2-one.",
+      "acidNeedsTheWordAcid": "Der Name einer Carbonsäure endet mit dem eigenen Wort acid, nach einem Leerzeichen: z. B. ethanoic acid, butanedioic acid."
+    },
+    "naming": {
+      "nothingDrawn": "Es wurde noch nichts gezeichnet.",
+      "notASingleChain": "Diese Zeichnung besteht aus getrennten Teilen. Verbinde sie zu einem Molekül, um es zu benennen.",
+      "moreThanOneRing": "Dieses Molekül hat mehr als einen Ring. Bisher können nur Moleküle mit einem einzigen Ring benannt werden, etwa cyclohexane oder methylcyclopentane.",
+      "benzeneRingNotCovered": "Dieser Ring aus sechs Kohlenstoffatomen hat drei Doppelbindungen, an jeder zweiten Bindung eine: Es ist ein Benzolring. Benzol und seine Verbindungen (Arene) werden anders benannt und sind noch nicht abgedeckt.",
+      "ringSideChainNotCovered": "Hier ist ein Ring Teil einer Seitenkette. Ein Ring wird nur dann als Seitenkette benannt, wenn er die ganze Seitenkette ist, ohne Doppelbindungen und ohne etwas daran, wie die Cyclohexylgruppe in cyclohexylmethanol. Andere sind noch nicht abgedeckt.",
+      "chainTooLong": "Die längste Kette hat {chainLength} Kohlenstoffatome. Dieses Werkzeug benennt vorerst Ketten mit bis zu {maxCarbons} Kohlenstoffatomen.",
+      "branchedSideChain": "Eine der Seitenketten ist selbst verzweigt (zum Beispiel eine Propan-2-yl-Gruppe). Verzweigte Seitenketten können noch nicht benannt werden.",
+      "groupOnSideChain": "An einer der Seitenketten sitzt ein Halogen oder eine OH-Gruppe (zum Beispiel eine Chlormethyl- oder Hydroxymethylgruppe). Solche Seitenketten können noch nicht benannt werden.",
+      "tooManyOfOneSideChain": "Es gibt mehr als {maxCount} Seitenketten derselben Art. Das kann dieses Werkzeug noch nicht benennen.",
+      "carbonylCompoundNotCovered": "Dieses Molekül hat eine C=O-Gruppe, die weder zu einer Aldehydgruppe (-CHO) noch zu einem Keton oder einer Carbonsäuregruppe (-COOH) gehört, zum Beispiel ein Säurechlorid (-COCl). Diese sind noch nicht abgedeckt: Bisher kann eine C=O-Gruppe nur an einem Kohlenstoffatom benannt werden, dessen übrige Bindungen Einfachbindungen zu Wasserstoff- oder Kohlenstoffatomen sind oder, in -COOH, zu einer OH-Gruppe."
+    },
+    "diagramTitle": {
+      "showName": "Name zeigen",
+      "showNameTitle": "Den IUPAC-Namen aufdecken",
+      "newMolecule": "Neues Molekül",
+      "newMoleculeTitle": "Ein weiteres Molekül zum Benennen"
+    },
+    "addAtom": {
+      "title": "Atom hinzufügen",
+      "carbon": "Kohlenstoff",
+      "carbonTitle": "Solange dies an ist, fügt jeder Klick in die Zeichnung ein Kohlenstoffatom hinzu. Erneut drücken oder Esc zum Beenden. Strg + Klick fügt jederzeit eines hinzu.",
+      "hydrogen": "Wasserstoff",
+      "hydrogenTitle": "Wasserstoffatome werden automatisch ergänzt, sodass jedes Kohlenstoffatom 4 Bindungen hat.",
+      "hydroxylGroup": "Hydroxy",
+      "hydroxylGroupTitle": "OH, die Hydroxygruppe eines Alkohols: Solange dies an ist, tauscht ein Klick auf ein Wasserstoffatom es gegen OH, ein Klick auf ein Halogen ändert es zu OH. Erneut drücken oder Esc zum Beenden.",
+      "carbonylOxygen": "Carbonyl",
+      "carbonylOxygenTitle": "=O, der Sauerstoff einer C=O-Gruppe (Carbonylgruppe): Solange dies an ist, tauscht ein Klick auf ein Wasserstoffatom es und ein weiteres Wasserstoffatom am selben Kohlenstoffatom gegen =O. Am Endkohlenstoffatom einer Kette ergibt das ein Aldehyd, -CHO, und an einem Kohlenstoffatom in der Mitte ein Keton, wie in CH3COCH3. Erneut drücken oder Esc zum Beenden.",
+      "halogens": "Halogene",
+      "fluorine": "Fluor",
+      "chlorine": "Chlor",
+      "bromine": "Brom",
+      "iodine": "Iod",
+      "halogenTitle": "{element}: Solange dies an ist, tauscht ein Klick auf ein Wasserstoffatom es gegen {symbol}, ein Klick auf ein anderes Halogen ändert es zu {symbol}. Erneut drücken oder Esc zum Beenden.",
+      "erase": "Löschen",
+      "eraseTitle": "Solange dies an ist, entfernt ein Klick auf ein Kohlenstoffatom, eine Bindung oder eine Gruppe (Halogen, OH oder =O) diese. Erneut drücken oder Esc zum Beenden. Rechtsklick löscht jederzeit.",
+      "makeSmaller": "Menü „Atom hinzufügen“ verkleinern",
+      "makeBigger": "Menü „Atom hinzufügen“ vergrößern",
+      "smaller": "Kleiner",
+      "bigger": "Größer"
+    },
+    "view": {
+      "label": "Darstellung des Moleküls",
+      "displayed": "Strukturformel",
+      "displayedTitle": "Jedes Atom und jede Bindung wird gezeigt",
+      "skeletal": "Skelettformel",
+      "skeletalTitle": "Nur Linien: Jede Ecke und jedes Linienende ist ein Kohlenstoffatom"
+    },
+    "drawing": {
+      "displayedFormulaLabel": "Strukturformel des Moleküls",
+      "skeletalFormulaLabel": "Skelettformel des Moleküls",
+      "emptyDrawing": "Halte Strg gedrückt und klicke hier, um ein Kohlenstoffatom zu setzen (oder drücke links auf „Kohlenstoff“), oder tippe oben einen Namen oder eine Formel ein.",
+      "clickToAddCarbon": "Klicken, um Kohlenstoff hinzuzufügen",
+      "clickToAddCarbonUntilEsc": "Klicken, um Kohlenstoff hinzuzufügen (Esc zum Beenden)",
+      "erasingUntilEsc": "Löschen (Esc zum Beenden)",
+      "clickToErase": "Klicken zum Löschen",
+      "dragToMoveCarbon": "Ziehen zum Verschieben · Rechtsklick zum Löschen",
+      "dragToTurnBond": "Ziehen zum Drehen · Rechtsklick zum Löschen",
+      "ctrlClickForCarbon": "Strg + Klick für Kohlenstoff",
+      "bondTitle": "Ziehen, um diese Bindung zu drehen. Strg + Klick macht sie zur Doppel- oder Einfachbindung. Rechtsklick entfernt ihre kleinere Seite.",
+      "bondTitleWhileErasing": "Klicken, um die kleinere Seite dieser Bindung zu entfernen",
+      "carbonTitle": "Ziehen, um dieses Kohlenstoffatom zu verschieben. Strg + Ziehen zu einem anderen Kohlenstoffatom verbindet die beiden. Rechtsklick entfernt es.",
+      "carbonTitleWhileErasing": "Klicken, um dieses Kohlenstoffatom zu entfernen",
+      "releaseToPlaceCarbon": "Loslassen, um dieses Kohlenstoffatom zu setzen",
+      "newCarbonReplacesHydrogen": "Das neue Kohlenstoffatom ersetzt dieses Wasserstoffatom",
+      "tooCloseToAnotherCarbon": "Zu nah an einem anderen Kohlenstoffatom.",
+      "everyCarbonHasFourBonds": "Jedes Kohlenstoffatom hat schon 4 Bindungen.",
+      "clickToMakeDoubleBond": "Klicken für eine Doppelbindung",
+      "clickToMakeSingleBond": "Klicken für eine Einfachbindung",
+      "cannotMakeDoubleBond": "Keine Doppelbindung möglich: Ein Kohlenstoffatom hier hat schon 4 Bindungen",
+      "releaseToCloseRing": "Loslassen, um diese Kohlenstoffatome zu verbinden und einen Ring zu schließen",
+      "releaseToJoinCarbons": "Loslassen, um diese Kohlenstoffatome zu verbinden",
+      "carbonsAlreadyBonded": "Diese Kohlenstoffatome sind schon miteinander verbunden",
+      "carbonHasNoRoomToJoin": "Verbinden nicht möglich: Ein Kohlenstoffatom hier hat schon 4 Bindungen",
+      "ringBondCannotTurn": "Bindungen in einem Ring lassen sich nicht drehen · Rechtsklick öffnet den Ring",
+      "clickToSwapHydrogenForGroup": "Klicken, um dieses H gegen {symbol} zu tauschen",
+      "clickToSwapHydrogensForCarbonyl": "Klicken, um dieses H und ein weiteres gegen =O zu tauschen",
+      "clickToChangeGroup": "Klicken, um es zu {symbol} zu ändern",
+      "clickToChangeToCarbonyl": "Klicken, um zu =O zu ändern",
+      "carbonylNeedsTwoHydrogens": "=O ersetzt 2 Wasserstoffatome, und dieses Kohlenstoffatom hat nur 1",
+      "clickToPutHydrogenBack": "Klicken, um das H zurückzusetzen",
+      "pointAtHydrogenUntilEsc": "Auf ein Wasserstoffatom zeigen, um es gegen {symbol} zu tauschen (Esc zum Beenden)",
+      "rightClickToRemoveGroup": "Rechtsklick zum Entfernen",
+      "groupTitle": "Rechtsklick entfernt diese Gruppe. An ihre Stelle kommen wieder Wasserstoffatome.",
+      "groupTitleWhileErasing": "Klicken, um diese Gruppe zu entfernen"
+    },
+    "answer": {
+      "label": "Dein Name für dieses Molekül:",
+      "correct": "Richtig",
+      "notCorrect": "Nicht richtig",
+      "next": "Weiter",
+      "nextTitle": "Ein weiteres Molekül zum Benennen (oder Enter drücken)",
+      "hintPunctuation": "Fast! Prüfe die Satzzeichen: Kommas stehen zwischen Zahlen (2,3-), Bindestriche zwischen Zahlen und Wörtern (2-methyl), und es gibt keine Leerzeichen, außer vor dem Wort acid (ethanoic acid).",
+      "hintBracketsOnMethane": "Fast! Bei Methan kommt jedes Halogen nach dem ersten in Klammern, z. B. trichloro(fluoro)methane.",
+      "hintLeaveOutLocants": "Dieser Name beschreibt das Molekül, aber hier fallen die Lokanten weg: Jede Gruppe kann nur an einer Stelle sitzen, wie in chloroethane (nicht 1-chloroethane).",
+      "hintHydroxyAsSuffix": "In einem Alkohol wird die OH-Gruppe durch die Endung -ol angegeben, nicht durch die Vorsilbe hydroxy: z. B. propan-2-ol, nicht 2-hydroxypropane.",
+      "hintKetoneAsSuffix": "In einem Keton wird das C=O durch die Endung -one angegeben, nicht durch die Vorsilbe oxo: z. B. propan-2-one, nicht 2-oxopropane. Oxo wird nur verwendet, wenn es auch eine CHO- oder COOH-Gruppe gibt, wie in 3-oxobutanal und 3-oxobutanoic acid.",
+      "hintAldehydeLocant": "Die CHO-Gruppe eines Aldehyds sitzt immer an C1 (bei -dial auch am letzten Kohlenstoffatom), deshalb fallen die Lokanten von -al weg: z. B. propanal, nicht propan-1-al, und butanedial, nicht butane-1,4-dial.",
+      "hintCarboxylicAcidLocant": "Die COOH-Gruppe einer Carbonsäure sitzt immer an C1 (bei -dioic acid auch am letzten Kohlenstoffatom), deshalb fallen die Lokanten von -oic acid weg: z. B. ethanoic acid, nicht ethan-1-oic acid, und butanedioic acid, nicht butane-1,4-dioic acid.",
+      "hintNotTheLongestChain": "Dieser Name beschreibt das Molekül, geht aber nicht von der richtigen Hauptkette aus: der längsten Kohlenstoffkette oder, bei einem Aldehyd, Keton oder Alkohol, der längsten Kette mit möglichst vielen CHO-Gruppen (oder, wenn es keine gibt, C=O-Gruppen von Ketonen, oder, wenn es auch die nicht gibt, OH-Gruppen).",
+      "hintGroupIdenticalSideChains": "Fasse gleiche Seitenketten mit di-, tri-, tetra- zusammen (z. B. 2,3-dimethyl).",
+      "hintAlphabeticalOrder": "Schreibe die Seitenketten und Halogene in alphabetischer Reihenfolge (di-, tri- werden beim Sortieren nicht beachtet), z. B. 2-bromo-3-methyl.",
+      "hintLowestLocants": "Dieser Name beschreibt das Molekül, aber die Nummerierung stimmt nicht. Nummeriere die Kette von dem Ende aus, das die niedrigsten Lokanten ergibt: zuerst für die CHO-Gruppen (-al) oder sonst die OH-Gruppen (-ol), dann für die Doppelbindungen, dann für Seitenketten, Halogene und andere Gruppen zusammen."
+    },
+    "footer": "Kostenloses Open-Source-Lernwerkzeug, noch in Entwicklung. Ohne Gewähr, dass jeder Name richtig ist. Die Namen folgen den IUPAC-Empfehlungen von 2013."
+  }
+}

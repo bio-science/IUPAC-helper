@@ -1,0 +1,690 @@
+{
+  "language": {
+    "nativeName": "English",
+    "flag": "gb"
+  },
+  "languageNames": {
+    "cy": "Welsh",
+    "de": "German",
+    "en-GB": "English",
+    "es": "Spanish",
+    "ja": "Japanese",
+    "zh-CN": "Chinese"
+  },
+  "text": {
+    "app": {
+      "title": "IUPAC Organic Molecule Naming Helper",
+      "subtitle": "This tool is currently intended to help students understand IUPAC naming of organic molecules."
+    },
+    "languagePicker": {
+      "buttonLabel": "Language: {language}",
+      "listLabel": "Choose a language",
+      "couldNotLoad": "That language could not be downloaded. Check your internet connection and try again."
+    },
+    "installApp": {
+      "button": "Install app",
+      "buttonTitle": "Add IUPAC Helper to your device, so it works offline",
+      "appleNoteLabel": "Install IUPAC Helper",
+      "appleNote": "{useOffline} tap Share {shareSymbol} (you may need to tap ••• first), then {addToHomeScreen}.",
+      "appleUseOffline": "Use IUPAC Helper offline:",
+      "appleShareSymbol": "Share",
+      "appleAddToHomeScreen": "Add to Home Screen",
+      "appleGotIt": "Got it"
+    },
+    "drawingButtons": {
+      "resetView": "Reset view",
+      "resetViewTitle": "Show the whole molecule in the middle",
+      "removeAll": "Remove all",
+      "removeAllTitle": "Remove the whole molecule (Undo brings it back)",
+      "undo": "↶ Undo",
+      "undoTitle": "Undo the last change to the drawing (Ctrl + Z)"
+    },
+    "practise": {
+      "start": "Practise",
+      "startTitle": "Shows a random molecule with its name hidden. Type its IUPAC name in the box at the top to check it, then press Enter or New molecule for another.",
+      "end": "End practise",
+      "endTitle": "Go back to drawing and typing molecules",
+      "moleculeChanged": "You have changed the molecule from our practice one",
+      "restore": "Restore",
+      "restoreTitle": "Show the practice molecule again (Undo brings back your change)",
+      "options": {
+        "presetLabel": "What to practise",
+        "presets": {
+          "aLevel": "Intro to Carbon Chemistry",
+          "aLevelHarder": "Intro to Carbon Chemistry +hard",
+          "allSupported": "All supported",
+          "custom": "Custom"
+        },
+        "featuresButtonLabel": "Choose what the practice molecules can have in them",
+        "featuresListLabel": "Practice molecules can have",
+        "notYetHeading": "Not in practice yet",
+        "notYetTitle": "Practice can't make these molecules yet",
+        "lastKindTitle": "At least one kind of molecule has to be ticked",
+        "needsFeatureTitle": "Tick {feature} first",
+        "appliesFromNext": "Changes show from the next molecule."
+      },
+      "features": {
+        "alkanes": "Alkanes",
+        "branches": "Branched chains (methyl and ethyl groups)",
+        "cycloalkanes": "Cycloalkanes (rings)",
+        "alkenes": "Alkenes",
+        "ezIsomers": "E/Z isomers",
+        "ezIsomersMoreOften": "E/Z isomers more often (about 1 molecule in 5)",
+        "haloalkanes": "Haloalkanes",
+        "alcohols": "Alcohols",
+        "aldehydes": "Aldehydes",
+        "ketones": "Ketones",
+        "carboxylicAcids": "Carboxylic acids",
+        "longChains": "Long main chains ({from} to {to} carbons)",
+        "harderMolecules": "Harder molecules (more groups, two C=C, CHO on a ring, longer chains more often)",
+        "esters": "Esters",
+        "acylChlorides": "Acyl chlorides",
+        "acidAnhydrides": "Acid anhydrides",
+        "amines": "Amines",
+        "amides": "Amides",
+        "nitriles": "Nitriles",
+        "aminoAcids": "Amino acids",
+        "arenes": "Arenes (benzene rings)"
+      }
+    },
+    "omnibox": {
+      "placeholder": "Type a name (e.g. propan-2-ol) or a formula (e.g. C5H12)",
+      "label": "Name or formula",
+      "isomersLabel": "Isomers of this formula",
+      "drawsButIupacNameIs": "This draws the molecule, but its IUPAC name is {name}.",
+      "nameLeavesOutEAndZ": "This molecule has E and Z forms. A name without E or Z doesn't say which, so one of them is drawn here: {name}.",
+      "cisTransAccepted": "Each carbon of the C=C has one H, so cis and trans say the same as Z and E here. IUPAC names use E and Z: {name}.",
+      "formulaIsomers": {
+        "one": "{formula} has {count} isomer. Pick one to draw it:",
+        "other": "{formula} has {count} isomers. Pick one to draw it:"
+      },
+      "formulaIsomersSomeNotCovered": {
+        "one": "{formula} has {count} isomer ({notCoveredCount} more with side chains that are branched, or are rings with something on them, not covered yet). Pick one to draw it:",
+        "other": "{formula} has {count} isomers ({notCoveredCount} more with side chains that are branched, or are rings with something on them, not covered yet). Pick one to draw it:"
+      },
+      "formulaElementThenNumber": "Formulae are written element then number, e.g. C5H12.",
+      "oxygenWithTooManyBonds": "An O here leaves its carbon with more than 4 bonds. An O after a carbon is read as its C=O (CH3CHO, CH3COCH3) when the carbon has room for one, and otherwise as an ether's O joining it to the next carbon (CH3OCH3, CH3CH2OCH3). Check the hydrogens on the carbon before the O.",
+      "tooManyCarbons": "This tool draws molecules with up to {maxCarbons} carbons for now.",
+      "tooManyIsomersToList": "{formula} has too many isomers to list here. Type a name or a structural formula to draw one.",
+      "notAnAlkaneFormula": {
+        "one": "Alkanes have the general formula CnH2n+2, so {count} carbon has at most {hydrogenCount} hydrogens ({formula}). Each C=C double bond takes away 2 more.",
+        "other": "Alkanes have the general formula CnH2n+2, so {count} carbons have at most {hydrogenCount} hydrogens ({formula}). Each C=C double bond takes away 2 more."
+      },
+      "notAHaloalkaneFormula": {
+        "one": "Each halogen takes the place of a hydrogen, so {count} carbon has at most {hydrogenCount} hydrogens and halogens together (as in {formula}). Each C=C double bond takes away 2 more.",
+        "other": "Each halogen takes the place of a hydrogen, so {count} carbons have at most {hydrogenCount} hydrogens and halogens together (as in {formula}). Each C=C double bond takes away 2 more."
+      },
+      "notAnAmineFormula": {
+        "one": "An NH2 group takes the place of a hydrogen and brings two of its own, so each N adds one hydrogen to the alkane's count (an NH between two carbons does the same): {count} carbon has at most {hydrogenCount} hydrogens with this many N (as in {formula}), and one fewer for each halogen. Each C=C double bond, ring and C=O takes away 2 more.",
+        "other": "An NH2 group takes the place of a hydrogen and brings two of its own, so each N adds one hydrogen to the alkane's count (an NH between two carbons does the same): {count} carbons have at most {hydrogenCount} hydrogens with this many N (as in {formula}), and one fewer for each halogen. Each C=C double bond, ring and C=O takes away 2 more."
+      },
+      "notAnAlcoholFormula": {
+        "one": "An OH group takes the place of a hydrogen and brings its own, so an alcohol has as many hydrogens as the alkane: {count} carbon has at most {hydrogenCount} hydrogens, counting those in OH groups (as in {formula}), and one fewer for each halogen. Each C=C double bond, and each C=O of an aldehyde, ketone or carboxylic acid, takes away 2 more.",
+        "other": "An OH group takes the place of a hydrogen and brings its own, so an alcohol has as many hydrogens as the alkane: {count} carbons have at most {hydrogenCount} hydrogens, counting those in OH groups (as in {formula}), and one fewer for each halogen. Each C=C double bond, and each C=O of an aldehyde, ketone or carboxylic acid, takes away 2 more."
+      },
+      "howToWriteStructuralFormula": "Write a structural formula one carbon at a time, with each side chain in brackets after the carbon it is joined to, each halogen, OH or O after its carbon, and = for a double bond, e.g. CH3CH(CH3)CH=CH2, CH3CHClCH3, CH3CH(OH)CH3 CH3CH2CHO or CH3COOH.",
+      "ringInStructuralFormula": "This looks like a ring: two carbons are each one bond short, so they would be joined to each other. A ring can't be written as a structural formula on one line, so type its name instead, e.g. cyclohexane or methylcyclopentane, or draw the chain and join its ends.",
+      "carbonNeedsFourBonds": {
+        "one": "Carbon {carbonNumber} ({group}) would make {count} bond, but every carbon makes exactly 4.",
+        "other": "Carbon {carbonNumber} ({group}) would make {count} bonds, but every carbon makes exactly 4."
+      },
+      "groupCannotBeInAnAlkane": {
+        "one": "{group} can't be read as a side chain: written as a formula, a side chain must be an alkyl group, where {count} carbon has {hydrogenCount} hydrogens ({alkylGroup}). Write a side chain with a double bond one carbon at a time, e.g. (CH=CH2).",
+        "other": "{group} can't be read as a side chain: written as a formula, a side chain must be an alkyl group, where {count} carbons have {hydrogenCount} hydrogens ({alkylGroup}). Write a side chain with a double bond one carbon at a time, e.g. (CH=CH2)."
+      },
+      "formulaAlkeneIsomers": {
+        "one": "{formula} has {count} isomer, with one C=C double bond or a ring. Pick one to draw it:",
+        "other": "{formula} has {count} isomers, each with one C=C double bond or a ring. Pick one to draw it:"
+      },
+      "formulaAlkeneIsomersSomeNotCovered": {
+        "one": "{formula} has {count} isomer, with one C=C double bond or a ring ({notCoveredCount} more with side chains that are branched, or are rings with something on them are not covered yet). Pick one to draw it:",
+        "other": "{formula} has {count} isomers, each with one C=C double bond or a ring ({notCoveredCount} more with side chains that are branched, or are rings with something on them are not covered yet). Pick one to draw it:"
+      },
+      "formulaPolyeneIsomers": {
+        "one": "{formula} has {count} isomer, with {doubleBondCount} C=C double bonds, or a ring in place of one of them (isomers with more rings or C≡C triple bonds are not covered yet). Pick one to draw it:",
+        "other": "{formula} has {count} isomers, each with {doubleBondCount} C=C double bonds, or a ring in place of one of them (isomers with more rings or C≡C triple bonds are not covered yet). Pick one to draw it:"
+      },
+      "formulaPolyeneIsomersSomeNotCovered": {
+        "one": "{formula} has {count} isomer, with {doubleBondCount} C=C double bonds, or a ring in place of one of them ({notCoveredCount} more with side chains that are branched, or are rings with something on them, or with a benzene ring, and isomers with more rings or C≡C triple bonds, are not covered yet). Pick one to draw it:",
+        "other": "{formula} has {count} isomers, each with {doubleBondCount} C=C double bonds, or a ring in place of one of them ({notCoveredCount} more with side chains that are branched, or are rings with something on them, or with a benzene ring, and isomers with more rings or C≡C triple bonds, are not covered yet). Pick one to draw it:"
+      },
+      "formulaOxygenAndNitrogenIsomers": {
+        "one": "{formula} has {count} isomer with an open chain or one ring. Left out are isomers with an O or N in a ring, with more rings, or with an N joined to three carbons (tertiary amines), which are not covered yet, and unstable ones, with two OH or NH2 groups on one carbon, an OH or NH2 and an O between carbons on one carbon, or an OH or NH2 on a C=C carbon. Pick one to draw it:",
+        "other": "{formula} has {count} isomers with an open chain or one ring: alcohols, aldehydes, ketones, carboxylic acids, esters, ethers, amines and amides, as the formula allows. Left out are isomers with an O or N in a ring, with more rings, or with an N joined to three carbons (tertiary amines), which are not covered yet, and unstable ones, with two OH or NH2 groups on one carbon, an OH or NH2 and an O between carbons on one carbon, or an OH or NH2 on a C=C carbon. Pick one to draw it:"
+      },
+      "formulaOxygenAndNitrogenIsomersSomeNotCovered": {
+        "one": "{formula} has {count} isomer with an open chain or one ring ({notCoveredCount} more can't be named yet, such as those with a branched side chain, a ring side chain with something on it, a group with something on it beyond an O or N, or more than two COOH or CHO groups on one chain). Left out are isomers with an O or N in a ring, with more rings, or with an N joined to three carbons (tertiary amines), which are not covered yet, and unstable ones, with two OH or NH2 groups on one carbon, an OH or NH2 and an O between carbons on one carbon, or an OH or NH2 on a C=C carbon. Pick one to draw it:",
+        "other": "{formula} has {count} isomers with an open chain or one ring: alcohols, aldehydes, ketones, carboxylic acids, esters, ethers, amines and amides, as the formula allows ({notCoveredCount} more can't be named yet, such as those with a branched side chain, a ring side chain with something on it, a group with something on it beyond an O or N, or more than two COOH or CHO groups on one chain). Left out are isomers with an O or N in a ring, with more rings, or with an N joined to three carbons (tertiary amines), which are not covered yet, and unstable ones, with two OH or NH2 groups on one carbon, an OH or NH2 and an O between carbons on one carbon, or an OH or NH2 on a C=C carbon. Pick one to draw it:"
+      },
+      "noOxygenOrNitrogenCompoundIsomers": "{formula} has no stable isomers with an open chain or one ring that can be named here. It may have an O or N in a ring, more than one ring, or an N joined to three carbons (a tertiary amine), which are not covered yet.",
+      "tooFewHydrogensForOneRing": "{formula} has too few hydrogens for an open chain or a single ring: it would need more than one ring, or a C≡C triple bond, which are not covered yet.",
+      "carbonNeedsFourBondsMissingDoubleBond": {
+        "one": "Carbon {carbonNumber} ({group}) would make {count} bond, but every carbon makes exactly 4. For a double bond, write =, e.g. CH2=CHCH3, and for a triple bond ≡ or #, e.g. HC≡CCH3.",
+        "other": "Carbon {carbonNumber} ({group}) would make {count} bonds, but every carbon makes exactly 4. For a double bond, write =, e.g. CH2=CHCH3, and for a triple bond ≡ or #, e.g. HC≡CCH3."
+      },
+      "peroxideNotCovered": "Two O atoms are joined to each other here (a peroxide, -O-O-, as in HOO-CO-CH3). Peroxides are not covered yet."
+    },
+    "otherNames": {
+      "systematicNameAccepted": "{typedName} is right: it is the systematic name. The preferred IUPAC name uses a name IUPAC has kept for this parent instead: {name}.",
+      "generalNameAccepted": "{typedName} is right: IUPAC keeps this older name, but not as the preferred IUPAC name, which is {name}.",
+      "locantLeftOutAccepted": "{typedName} is right, as the C=O could only be in one place, but the preferred IUPAC name keeps its locant: {name}.",
+      "generalPrefixAccepted": "{typedName} is right: IUPAC keeps the older prefix {prefix}, but not in preferred IUPAC names, which use {preferredPrefix} (P-29.6.2.2): {name}."
+    },
+    "retainedNames": {
+      "explanation": "The systematic rules would name {formula} \"{systematicParent}\", from the chain and the ending of its group. IUPAC keeps the older name \"{retainedParent}\" for it instead, and makes that the preferred IUPAC name ({rules}). This is one of a few very common compounds named before the systematic rules were made, whose old names are kept as they are so widely used. {substitution}",
+      "explanationOfHydrocarbon": "The systematic rules would name {formula} \"{systematicParent}\", from its chain and its multiple bond. IUPAC keeps the older name \"{retainedParent}\" for it instead, and makes that the preferred IUPAC name ({rules}). This is one of a few very common compounds named before the systematic rules were made, whose old names are kept as they are so widely used. {substitution}",
+      "substitutedOnCarbon": "Groups on it are named as usual, with the same prefixes and locants as in the systematic name, e.g. {example}.",
+      "substitutedOnNitrogen": "Groups may only go on its N, e.g. {example}: with groups on its carbon, it is named systematically.",
+      "notSubstituted": "Its preferred IUPAC name has no prefixes: with groups on it, it is named systematically."
+    },
+    "readingNames": {
+      "notRecognised": "Not a name this tool recognises yet. Try a name like 2-methylbutane, but-1-ene, 2-chloropropane, propan-2-ol, propanal, acetic acid, methyl acetate, acetamide, ethanamine or methoxyethane, or a formula like C5H12.",
+      "twoGroupsOnAmideNitrogenNotCovered": "Amides with two groups on the N, such as N,N-dimethylacetamide, are not covered yet: so far, the N can have one group, as in N-methylacetamide.",
+      "esterNeedsGroup": "An ester's name starts with the group joined to its O, as a separate word: methyl acetate, ethyl propanoate.",
+      "amideNeedsLocants": "Give each group on an amide its locant (a position number), e.g. 2-chloroacetamide. An amide's N can have groups too, so its locants are always written, unlike those in chloroacetic acid.",
+      "tertiaryAmineNotCovered": "Amines with two groups on the N, such as N,N-dimethylethanamine or (dimethylamino), are not covered yet: so far, the N can have one group, as in N-methylethanamine or 2-(methylamino)ethan-1-ol.",
+      "amineNeedsLocant": "Give the amine group a locant (a position number), e.g. propan-1-amine or propan-2-amine. Locants are only left out when the NH2 could go in just one place, as in ethanamine, and once any locant is needed, all of them are written, as in 2-chloroethan-1-amine.",
+      "etherNeedsLocant": "Give the alkoxy group a locant (a position number), e.g. 1-methoxypropane or 2-methoxypropane. Locants are only left out when the group could go in just one place, as in methoxyethane.",
+      "etherNeedsGroup": "An ether's O joins two carbons, so its prefix names the group on the far side of the O: methoxy, ethoxy, (pentyloxy) ...",
+      "tooManyLocants": "\"{group}\" has too many locants.",
+      "wrongMultiplyingPrefix": {
+        "one": "\"{group}\" has {count} locant, so it should be \"{correctedGroup}\".",
+        "other": "\"{group}\" has {count} locants, so it should be \"{correctedGroup}\"."
+      },
+      "locantNotOnChain": "Locant {locant} is not on the chain: a {chainLength}-carbon chain is numbered 1 to {chainLength}.",
+      "sideChainNeedsLocant": "Each side chain needs a locant (a position number) in front of it, e.g. 2-methylpropane.",
+      "tertButylCannotBeSubstituted": "tert-butyl is only used for -C(CH3)3 with nothing on it (P-29.6.1). With a group on one of its carbons, name it as a substituted 2-methylpropan-2-yl group instead, e.g. (1-chloro-2-methylpropan-2-yl).",
+      "olderPrefixCannotBeSubstituted": "{prefix} is an older name for a side chain with nothing on it, so it can't have groups of its own (P-29.6.2.2, P-29.6.3). Name the side chain from its preferred prefix, {preferredPrefix}, and put the groups on that instead.",
+      "substitutedSideChainNeedsBrackets": "A side chain with a group on it is written in brackets, with its locant on the main chain in front: 3-(chloromethyl)hexane, not 3-chloromethylhexane (P-16.5.1.2).",
+      "groupOnSideChainNeedsLocant": "Give each group or side chain on a side chain a locant too, numbered along the side chain's own chain: e.g. 3-(2-chloroethyl)hexane, 3-(2-methylpropyl)hexane, 3-(1-hydroxypropan-2-yl)hexane. Locants are only left out when the group could go on just one carbon, as in (chloromethyl), or when every hydrogen of the side chain is swapped for the same group, as in (pentafluoroethyl).",
+      "halogenNeedsLocant": "Give each halogen a locant (a position number), e.g. 1-chloropropane or 2-chloropropane. Locants are only left out when the halogen could go in just one place, as in chloroethane.",
+      "hydroxyNeedsLocant": "Give the OH group a locant (a position number), e.g. propan-1-ol or propan-2-ol. Locants are only left out when the OH could go in just one place, as in ethanol, and once any locant is needed, all of them are written, as in 2-chloroethan-1-ol.",
+      "halogenPrefixes": "In a name, a halogen is written as a prefix ending in -o: fluoro, chloro, bromo or iodo, e.g. 2-chloropropane.",
+      "carbonWouldHaveTooManyBonds": "Carbon {locant} would have more than 4 bonds.",
+      "doubleBondNotOnChain": "There is no bond {locant} for a double bond: in a {chainLength}-carbon chain the bonds are numbered 1 to {lastLocant}.",
+      "ringTooSmall": "A ring needs at least {smallestRingSize} carbons, so there is no ring of {carbonCount}: the smallest is cyclopropane.",
+      "ringNeedsCarbaldehydeOrCarboxylicAcid": "The carbon of a CHO or COOH group can't be one of the ring's carbons, so a ring has no -al or -oic acid. Name the group as a suffix with its own carbon: -carbaldehyde for CHO, as in cyclohexanecarbaldehyde, and -carboxylic acid for COOH, as in cyclohexanecarboxylic acid.",
+      "carbaldehydeAndCarboxylicAcidOnlyOnRings": "-carbaldehyde, -carboxylic acid and the prefix formyl are for CHO and COOH groups joined to a ring. On a chain, the carbon of the group is part of the chain, so it is named with -al or -oic acid: e.g. propanal, propanoic acid (not ethanecarbaldehyde or ethanecarboxylic acid).",
+      "ringGroupNeedsLocant": "Give each -carbaldehyde or -carboxylic acid group a locant (a position number) when there are two or more of them, e.g. cyclohexane-1,2-dicarboxylic acid or cyclohexane-1,3-dicarboxylic acid.",
+      "doubleBondLocantRepeated": "Locant {locant} is given twice: each double bond needs its own locant.",
+      "tripleBondNotOnChain": "There is no bond {locant} for a triple bond: in a {chainLength}-carbon chain the bonds are numbered 1 to {lastLocant}.",
+      "tripleBondLocantRepeated": "Locant {locant} is given twice: each double or triple bond needs its own locant, and a bond can't be both.",
+      "tripleBondNeedsLocant": "Say where the triple bond is with a locant, e.g. but-1-yne or but-2-yne, or prop-2-ynoic acid.",
+      "doubleBondNeedsLocant": "Say where the double bond is with a locant, e.g. but-1-ene or but-2-ene, or prop-2-enal.",
+      "tooManyAldehydeGroups": "\"{group}\" has too many CHO groups: a CHO group is always at the end of a chain, so a chain has at most two (-dial, e.g. butanedial), and methane just one (methanal).",
+      "aldehydeAtChainEnd": "In \"{group}\", the CHO group is not at the end of the chain. The carbon of -al is always carbon 1 (and the last carbon for -dial), so its locants are left out: e.g. propanal, butanedial.",
+      "tooManyAcidGroups": "\"{group}\" has too many COOH groups: a COOH group is always at the end of a chain, so a chain has at most two (-dioic acid, e.g. butanedioic acid), and methane just one (methanoic acid).",
+      "acidAtChainEnd": "In \"{group}\", the COOH group is not at the end of the chain. The carbon of -oic acid is always carbon 1 (and the last carbon for -dioic acid), so its locants are left out: e.g. propanoic acid, butanedioic acid.",
+      "ketoneNeedsLocant": "Give the ketone's C=O a locant (a position number), whether it is written as -one or as the prefix oxo: e.g. pentan-2-one or pentan-3-one, and 3-oxobutanal. IUPAC keeps the locant of -one even where the C=O could only go in one place, as in propan-2-one and butan-2-one (often written propanone and butanone).",
+      "ketoneAtChainEnd": "In \"{group}\", the C=O is on an end carbon of the chain. There it has a hydrogen on it, so it is an aldehyde, named with -al: e.g. propanal, not propan-1-one. The C=O of a ketone is always on a carbon in the middle of the chain, as in propan-2-one.",
+      "acidNeedsTheWordAcid": "The name of a carboxylic acid ends in the separate word acid, after a space: e.g. ethanoic acid, butanedioic acid.",
+      "cisTransNeedsHydrogens": "cis and trans only say which way round a C=C is when each of its carbons has one H. Here one doesn't, so use E or Z, chosen by the CIP rules, e.g. (2E)-3-methylpent-2-ene.",
+      "stereoNeedsLocants": "Give each E or Z the locant of its double bond, as in (2Z,4E)-hexa-2,4-diene or (2E)-but-2-ene. The locants are only left out of the brackets in a name that has no locants, as in (E)-cyclooctene.",
+      "stereoLocantHasNoDoubleBond": "There is no double bond at {locant} for its E or Z. Each E or Z goes with the locant of its C=C (the lower of its two carbons), e.g. (2E)-but-2-ene.",
+      "doubleBondHasNoEOrZ": "The double bond at {locant} can't be E or Z, so leave the E or Z out for it. A C=C only has E and Z forms when each of its carbons has two different groups on it: but-1-ene has none, as its carbon 1 has two hydrogens. A C=C in a ring of fewer than 8 carbons can't be E or Z either."
+    },
+    "naming": {
+      "nothingDrawn": "Nothing has been drawn yet.",
+      "notASingleChain": "This drawing is in separate pieces. Join them up into one molecule to name it.",
+      "ringsSharingCarbonsNotCovered": "This molecule has rings that share carbons, as in a fused, bridged or spiro ring system (decalin, bicyclo[2.2.1]heptane, spiro[4.5]decane). Only rings on their own are named so far.",
+      "ringAssemblyNotCovered": "This molecule has two rings of the same size joined straight to each other: a ring assembly, which IUPAC names as one unit, such as 1,1'-bi(cyclohexane) or [1,1'-bi(cyclohexan)]-4-ol. Ring assemblies are not covered yet.",
+      "identicalRingsNotCovered": "Two or more rings of the same size could each be the parent here. Then IUPAC names the molecule with a multiplicative name, such as 1,1'-methylenedi(cyclohexane) or 1,1'-oxydi(cyclohexane), or chooses between the rings by the groups on them, and these are not covered yet.",
+      "benzeneRingNotCovered": "This six-carbon ring has three double bonds, one at every other bond: it is a benzene ring. Benzene and its compounds (arenes) are named in a different way, and are not covered yet.",
+      "ringSideChainNotCovered": "A ring is part of a side chain here. A ring is only named as a side chain when it is the whole side chain, with no double bonds and nothing on it, like the cyclohexyl group in cyclohexylmethanol. Others are not covered yet.",
+      "chainTooLong": "The longest chain has {chainLength} carbons. This tool names chains of up to {maxCarbons} carbons for now.",
+      "acylGroupWithCarboxyNotCovered": "A side chain has a C=O on the carbon joined to the main chain and a COOH group on it too (such as -CO-CH2-COOH). Naming this kind of side chain is not covered yet.",
+      "moreThanTwoAcidOrAldehydeGroupsNotCovered": "A chain here is joined to more than two COOH groups (or, with no COOH, more than two CHO groups). IUPAC then names them all with the ending \"carboxylic acid\" or \"carbaldehyde\", as in propane-1,2,3-tricarboxylic acid. Names like these are not covered yet.",
+      "esterOrAmideOnSideChainNotCovered": "An ester or amide group is on a side chain here, not at the end of the main chain. Naming it as a prefix (such as 2-methoxy-2-oxoethyl) is not covered yet.",
+      "tooManyOfOneSideChain": "There are more than {maxCount} of one kind of side chain, which this tool can't name yet.",
+      "carbonylCompoundNotCovered": "This molecule has a C=O group that is not part of an aldehyde (-CHO), a ketone or a carboxylic acid (-COOH): for example an acyl chloride (-COCl). These are not covered yet: so far, a C=O can only be named on a carbon whose other bonds are single bonds to hydrogens or carbons, or, in -COOH, to one OH group.",
+      "etherOrAmineInRingNotCovered": "An O or NH that joins two carbons is part of a ring here. Rings with an O or N in them (cyclic ethers and amines) are not covered yet.",
+      "etherOrAmineGroupNotCovered": "The group on the other side of the O or NH is not a straight chain joined by its end carbon, or a ring, with nothing on it. So far, ethers and secondary amines can only be named when that group is one like methyl, ethyl or cyclohexyl, as in methoxyethane, 1-chloro-2-ethoxyethane or N-methylethanamine.",
+      "nitrogenGroupOnPolyamineNotCovered": "This molecule has more than one amine group, and a group on one of the N atoms. Each N would need a number of its own in the name (N1, N2 ...), which is not covered yet.",
+      "acidDerivativeMixNotCovered": "This molecule has more than one kind of acid group among carboxylic acids (-COOH), esters (-COO-) and amides (-CONH2, -CONH-). Molecules with a mix of these are not covered yet.",
+      "moreThanOneLinkNotCovered": "This molecule has more than one O or NH joining a C=O to another carbon. So far, only esters with one -COO- group, such as methyl acetate, and amides with one -CONH- group, such as N-methylacetamide, can be named.",
+      "cyclicEsterOrAmideNotCovered": "The O or NH of this ester or amide is part of a ring. Rings with an O or N in them (lactones and lactams) are not covered yet.",
+      "esterOrAmideAlkylNotCovered": "The group on the far side of the O or NH is not a straight chain joined by its end carbon, or a ring, with nothing on it. Groups like propan-2-yl, or ones with halogens or OH on them, are not covered yet here."
+    },
+    "substituentGroups": {
+      "noFreeValence": "A substituent group's formula needs a dash for each free valence, the bond that joins it to the rest of a molecule: CH3-CH2– (ethyl), –OH (hydroxy), CH2= (methylidene).",
+      "formulaNotRead": "The group's formula {formula} could not be read. Write it as a structural formula with a dash for each free valence, such as CH3-CH2-O– or –CH2-Cl.",
+      "prefixNotRead": "The prefix \"{prefix}\" could not be read as a substituent group.",
+      "notOneGroup": "A group with one free valence must be joined to the rest of the molecule by exactly one bond.",
+      "groupNotCovered": "This group has an atom or group that can't be named as a prefix yet.",
+      "ringNotCovered": "A ring is part of this group. So far, a ring is only named as a group when it is the whole group, with no double bonds and nothing on it, like cyclohexyl.",
+      "linkInsideGroupNotCovered": "This group has an O or NH inside it, as well as the one joining it. Groups like this (such as 2-methoxyethoxy) are not covered yet.",
+      "prefixWithSeveralFreeValencesNotRead": "A prefix with more than one free valence, such as {prefix}, can't be read yet. Its group can be written as a formula instead, e.g. –CH2-CH2– for ethane-1,2-diyl or –CO-CH2-CH2-CO– for butanedioyl.",
+      "freeValencesNotCovered": "So far, a group can only have one free valence (a single, double or triple bond, as in ethyl, ethylidene and ethylidyne), or two at the two ends of an unbranched chain, such as ethane-1,2-diyl or butanedioyl. Other groups are not covered yet.",
+      "carbonylNotCovered": "This group has a C=O that is not part of an aldehyde (-CHO), ketone, carboxylic acid (-COOH) or amide (-CONH2) group, as in Cl-CO– (carbonochloridoyl). Groups like this are not covered yet.",
+      "chargeNotCovered": "This group has a charge (+ or −), as in –CH2⁻ (methanidyl). Groups with charges are not covered yet."
+    },
+    "diagramTitle": {
+      "retainedNameButton": "?",
+      "retainedNameButtonLabel": "Why this name isn't built from the chain",
+      "retainedNameTitle": "A retained name",
+      "systematicName": "Systematic name: {systematicName}",
+      "closeRetainedName": "Close",
+      "showName": "Show name",
+      "showNameTitle": "Reveal the IUPAC name",
+      "newMolecule": "New molecule",
+      "newMoleculeTitle": "Another molecule to name (or press Enter once your name is correct)"
+    },
+    "namingSteps": {
+      "heading": "How it was named",
+      "preferredNameToggle": "P",
+      "preferredNameToggleLabel": "Explain the preferred IUPAC name (on) or the systematic name (off)",
+      "explainingPreferredName": "Explaining the preferred IUPAC name: {name}",
+      "explainingSystematicName": "Explaining the systematic name: {name}",
+      "listLabel": "Steps in naming this molecule. Pick one to see the atoms and the part of the name it is about.",
+      "blueBookRules": "Blue Book: {rules}",
+      "moreInfo": "More about this",
+      "closeMoreInfo": "Close",
+      "seniorityOfClasses": {
+        "title": "Which group gives the ending",
+        "introduction": "Only one kind of group can give the ending. When a molecule has more than one kind, the one highest in this list does, and the others are written as prefixes (such as \"hydroxy\" or \"oxo\"):",
+        "classes": {
+          "carboxylicAcid": "Carboxylic acids, -COOH (\"oic acid\")",
+          "anhydride": "Acid anhydrides, -CO-O-CO- (\"oic anhydride\")",
+          "ester": "Esters, -COO- (\"oate\")",
+          "acidHalide": "Acyl halides, such as -COCl (\"oyl chloride\")",
+          "amide": "Amides, -CONH2 (\"amide\")",
+          "nitrile": "Nitriles, -C≡N (\"nitrile\")",
+          "aldehyde": "Aldehydes, -CHO (\"al\")",
+          "ketone": "Ketones, C=O inside the chain (\"one\")",
+          "alcohol": "Alcohols, -OH (\"ol\")",
+          "amine": "Amines, -NH2 (\"amine\")"
+        },
+        "here": "this molecule",
+        "alwaysPrefixes": "Halogens (fluoro, chloro, bromo, iodo), nitro groups and ethers' O (as in methoxy) never give the ending: they are always prefixes. C=C double bonds aren't groups like these: they change \"ane\" to \"ene\" instead."
+      },
+      "principalGroup": {
+        "title": "The ending: {suffix}",
+        "carboxylicAcid": {
+          "one": "The COOH group ranks highest of the groups here, so it gives the ending \"{suffix}\". Its carbon is part of the main chain.",
+          "other": "The COOH groups rank highest of the groups here, so they give the ending \"{suffix}\". Their carbons are part of the main chain."
+        },
+        "ringCarboxylicAcid": {
+          "one": "The COOH group ranks highest of the groups here, so it gives the ending. It is joined to a ring, and its carbon can't be one of the ring's, so the ending is \"{suffix}\", added after the ring's whole name.",
+          "other": "The COOH groups rank highest of the groups here, so they give the ending. They are joined to a ring, and their carbons can't be the ring's, so the ending is \"{suffix}\", added after the ring's whole name."
+        },
+        "ester": {
+          "one": "This is an ester: a carboxylic acid with the H of its OH swapped for a carbon group. The acid's ending \"oic acid\" becomes \"{suffix}\".",
+          "other": "This is an ester: a carboxylic acid with the H of each OH swapped for a carbon group. The acid's ending becomes \"{suffix}\"."
+        },
+        "amide": {
+          "one": "This is an amide: a carboxylic acid with its OH swapped for an NH2 group (or an NH joined to a carbon group). It gives the ending \"{suffix}\".",
+          "other": "This is an amide: a carboxylic acid with each OH swapped for an NH2 group (or an NH joined to a carbon group). They give the ending \"{suffix}\"."
+        },
+        "aldehyde": {
+          "one": "The CHO group (an aldehyde) ranks highest of the groups here, so it gives the ending \"{suffix}\". Its carbon is at the end of the main chain.",
+          "other": "The CHO groups (aldehydes) rank highest of the groups here, so they give the ending \"{suffix}\". Their carbons are the two ends of the main chain."
+        },
+        "ringAldehyde": {
+          "one": "The CHO group (an aldehyde) ranks highest of the groups here, so it gives the ending. It is joined to a ring, and its carbon can't be one of the ring's, so the ending is \"{suffix}\", added after the ring's whole name.",
+          "other": "The CHO groups (aldehydes) rank highest of the groups here, so they give the ending. They are joined to a ring, and their carbons can't be the ring's, so the ending is \"{suffix}\", added after the ring's whole name."
+        },
+        "ketone": {
+          "one": "The C=O inside the chain (a ketone) ranks highest of the groups here, so it gives the ending \"{suffix}\".",
+          "other": "The C=O groups inside the chain (ketones) rank highest of the groups here, so they give the ending \"{suffix}\"."
+        },
+        "alcohol": {
+          "one": "The OH group (an alcohol) ranks highest of the groups here, so it gives the ending \"{suffix}\".",
+          "other": "The OH groups (alcohols) rank highest of the groups here, so they give the ending \"{suffix}\"."
+        },
+        "amine": {
+          "one": "The NH2 group (an amine) ranks highest of the groups here, so it gives the ending \"{suffix}\".",
+          "other": "The NH2 groups (amines) rank highest of the groups here, so they give the ending \"{suffix}\"."
+        },
+        "secondaryAmine": {
+          "one": "The NH joins two carbon groups, so this is a secondary amine. It is named from the bigger group, as if that had an NH2 group, giving the ending \"{suffix}\"; the other group goes on the N.",
+          "other": "The NH joins two carbon groups, so this is a secondary amine. It is named from the bigger group, as if that had NH2 groups, giving the ending \"{suffix}\"; the other group goes on the N."
+        }
+      },
+      "parent": {
+        "title": "The main chain: {stem}",
+        "ring": "The ring is the parent, as no chain off it has more of the group that gives the ending. A ring of {count} carbons is \"{stem}\".",
+        "ringWithMostSuffixGroups": "This ring is the parent, as it has more of the group that gives the ending than the other rings, and no chain off it has more. A ring of {count} carbons is \"{stem}\".",
+        "largestRing": "This ring is the parent: no chain off it has more of the group that gives the ending, and of the rings with the most of that group, it has the most carbons. A ring of {count} carbons is \"{stem}\".",
+        "chainNotRings": {
+          "one": "The chain has more of the group that gives the ending than any of the rings, so the chain is the parent and the rings are side groups. A chain of one carbon is \"{stem}\".",
+          "other": "The chain has more of the group that gives the ending than any of the rings, so the chain is the parent and the rings are side groups. A chain of {count} carbons is \"{stem}\"."
+        },
+        "chainNotRing": {
+          "one": "The chain has more of the group that gives the ending than the ring does, so the chain is the parent and the ring is a side group. A chain of one carbon is \"{stem}\".",
+          "other": "The chain has more of the group that gives the ending than the ring does, so the chain is the parent and the ring is a side group. A chain of {count} carbons is \"{stem}\"."
+        },
+        "oneCarbon": "There is only one carbon in the main part, so the stem is \"{stem}\".",
+        "chainWithSuffixGroups": "The main chain is the one with the most of the group that gives the ending, and of those, the longest: {count} carbons, \"{stem}\".",
+        "longestChain": "The main chain is the longest chain of carbons: {count} carbons, \"{stem}\". It doesn't have to be drawn in a straight line."
+      },
+      "chainChoice": {
+        "title": "Why this chain",
+        "mostMultipleBonds": "Other chains are as long as this one ({carbonCount} carbons), but this one has the most multiple bonds, counting C=C double and C≡C triple bonds together.",
+        "lowestMultipleBondLocants": "Other chains are as long as this one ({carbonCount} carbons). This one gives the lowest numbers to the multiple bonds, C=C and C≡C together.",
+        "mostDoubleBonds": "Other chains are as long as this one ({carbonCount} carbons), but this one has the most C=C double bonds.",
+        "lowestSuffixLocants": "Other chains are as long as this one ({carbonCount} carbons). This one gives the lowest numbers to the group named by the ending.",
+        "lowestDoubleBondLocants": "Other chains are as long as this one ({carbonCount} carbons). This one gives the lowest numbers to the C=C double bonds.",
+        "mostPrefixes": "Other chains are as long as this one ({carbonCount} carbons), but this one has the most side groups on it.",
+        "lowestPrefixLocants": "Other chains are as long as this one ({carbonCount} carbons). This one gives the lowest numbers to the side groups, all together.",
+        "lowestLocantsInOrderOfCitation": "Other chains are as long as this one ({carbonCount} carbons) and give the same numbers. This one gives the lower number to the side group written first in the name."
+      },
+      "unsaturation": {
+        "title": "Main chain bonds: {ending}",
+        "none": "Every carbon–carbon bond in the main chain is single, so the ending is \"ane\".",
+        "doubleBonds": {
+          "one": "The main chain has a C=C double bond, so \"ane\" becomes \"ene\". Its locant {locants} is the lower number of its two carbons.",
+          "other": "The main chain has {count} C=C double bonds, so \"ane\" becomes \"{ending}\" (with \"a\" added to the stem). Their locants {locants} are the lower number of each bond's two carbons."
+        },
+        "doubleBondWithoutLocant": "The main chain has a C=C double bond, so \"ane\" becomes \"ene\". There is only one place it could be, so its locant is left out.",
+        "tripleBonds": {
+          "one": "The main chain has a C≡C triple bond, so \"ane\" becomes \"yne\". Its locant {tripleBondLocants} is the lower number of its two carbons.",
+          "other": "The main chain has {tripleBondCount} C≡C triple bonds, so \"ane\" becomes \"{ending}\" (with \"a\" added to the stem). Their locants {tripleBondLocants} are the lower number of each bond's two carbons."
+        },
+        "doubleAndTripleBonds": "The main chain has C=C double bonds at {locants} and C≡C triple bonds at {tripleBondLocants}, each numbered by the lower of its two carbons. Both are named in the ending, \"ene\" before \"yne\", and the \"e\" of \"ene\" is dropped before \"yne\": pent-1-en-4-yne. An \"a\" is added to the stem if the first ending has di, tri ...: hexa-1,3-dien-5-yne.",
+        "tripleBondWithoutLocant": "The main chain has a C≡C triple bond, so \"ane\" becomes \"yne\". There is only one place it could be, so its locant is left out.",
+        "finalEDropped": "The last \"e\" is dropped because the suffix after it begins with a vowel."
+      },
+      "numbering": {
+        "title": "Numbering the main chain",
+        "carbonylCarbonIsOne": "The carbon of the group that gives the ending is always carbon 1, at the end of the chain. Its locant is not written, as it can't be anywhere else.",
+        "lowestSuffixLocants": {
+          "one": "The chain is numbered so that the group named by the ending gets the lowest number it can: {locants}.",
+          "other": "The chain is numbered so that the groups named by the ending get the lowest numbers they can: {locants}."
+        },
+        "lowestDoubleBondLocants": {
+          "one": "Both ways of numbering give the ending's group the same numbers, so the C=C double bond decides: it gets the lowest number it can, {locants}.",
+          "other": "Both ways of numbering give the ending's groups the same numbers, so the C=C double bonds decide: they get the lowest numbers they can, {locants}."
+        },
+        "lowestMultipleBondLocants": {
+          "one": "Both ways of numbering give the ending's group the same numbers, so the multiple bond decides: it gets the lowest number it can, {locants}.",
+          "other": "Both ways of numbering give the ending's groups the same numbers, so the multiple bonds decide: C=C and C≡C together get the lowest numbers they can, {locants}."
+        },
+        "doubleBondsBeforeTripleBonds": "Both ways of numbering give the multiple bonds the same set of numbers, so the C=C double bonds get the lower ones: {locants}.",
+        "lowestPrefixLocants": "The group named by the ending and the double bonds, if any, don't decide which end is carbon 1, so the side groups do: together they get the lowest numbers they can ({locants}). Compare the numbers one by one; the first difference decides.",
+        "firstCitedPrefix": "Numbering either way gives every group the same set of numbers ({locants}), so the side group written first in the name, {prefix}, gets the lower number.",
+        "zFirst": "Numbering either way gives every group the same numbers, so the Z double bond gets the lower number: {locants}.",
+        "eitherWay": "Numbering from either end gives the same name."
+      },
+      "prefix": {
+        "title": "A side group: {prefix}",
+        "halogen": {
+          "one": "A {symbol} atom is named as the prefix \"{substituentName}\", on carbon {locants}.",
+          "other": "{count} {symbol} atoms, on carbons {locants}: the prefix \"{substituentName}\", with \"di\", \"tri\" ... to say how many."
+        },
+        "hydroxy": {
+          "one": "This OH group isn't the one that gives the ending, so it is the prefix \"hydroxy\", on carbon {locants}.",
+          "other": "These OH groups aren't the ones that give the ending, so they are the prefix \"hydroxy\", on carbons {locants}, with \"di\", \"tri\" ... to say how many."
+        },
+        "oxoKetone": {
+          "one": "A higher-ranking group gives the ending, so this C=O is the prefix \"oxo\", on carbon {locants}.",
+          "other": "A higher-ranking group gives the ending, so these C=O groups are the prefix \"oxo\", on carbons {locants}, with \"di\", \"tri\" ... to say how many."
+        },
+        "oxoAldehyde": {
+          "one": "The acid gives the ending, so the O of the CHO group at the other end of the chain is the prefix \"oxo\", on carbon {locants}. Its carbon is part of the main chain.",
+          "other": "The acid gives the ending, so the O of each CHO group at the end of the chain is the prefix \"oxo\", on carbons {locants}."
+        },
+        "formyl": {
+          "one": "A higher-ranking group gives the ending, and this CHO group is not at the end of a chain, so it is the prefix \"formyl\", on carbon {locants}.",
+          "other": "A higher-ranking group gives the ending, and these CHO groups are not at the end of a chain, so they are the prefix \"formyl\", on carbons {locants}."
+        },
+        "amino": {
+          "one": "A higher-ranking group gives the ending, so this NH2 group is the prefix \"amino\", on carbon {locants}.",
+          "other": "A higher-ranking group gives the ending, so these NH2 groups are the prefix \"amino\", on carbons {locants}, with \"di\", \"tri\" ... to say how many."
+        },
+        "alkylamino": {
+          "one": "An NH with a {groupName} group on it, joined to carbon {locants}: the prefix \"{substituentName}\".",
+          "other": "NH groups with a {groupName} group on each, joined to carbons {locants}: the prefix \"{substituentName}\", with \"bis\", \"tris\" ... to say how many."
+        },
+        "alkoxy": {
+          "one": "An O joining a {groupName} group to carbon {locants} (an ether) is the prefix \"{substituentName}\": \"{groupName}\" followed by \"oxy\", shortened to methoxy, ethoxy, propoxy and butoxy for the four smallest.",
+          "other": "O atoms joining {groupName} groups to carbons {locants} (an ether) are the prefix \"{substituentName}\": \"{groupName}\" followed by \"oxy\", shortened to methoxy, ethoxy, propoxy and butoxy for the four smallest. \"di\", \"bis\" ... say how many."
+        },
+        "cycloalkyl": {
+          "one": "A ring of {carbonCount} carbons joined to carbon {locants}: \"{substituentName}\", from the ring's name with \"ane\" changed to \"yl\".",
+          "other": "Rings of {carbonCount} carbons joined to carbons {locants}: \"{substituentName}\", from the ring's name with \"ane\" changed to \"yl\", and \"di\", \"tri\" ... to say how many."
+        },
+        "alkylidene": {
+          "one": "A side chain joined to carbon {locants} by a double bond. It is named like the alkane with the same number of carbons, with \"ane\" changed to \"ylidene\": \"{substituentName}\".",
+          "other": "Side chains joined to carbons {locants} by double bonds. Each is named like the alkane with the same number of carbons, with \"ane\" changed to \"ylidene\" (\"{substituentName}\"), and \"di\", \"tri\" ... say how many."
+        },
+        "alkenyl": {
+          "one": "A side chain with a C=C in it, joined to carbon {locants}: \"{substituentName}\". The side chain is numbered from the carbon joined to the main chain, and named like an alkene with \"yl\" on the end.",
+          "other": "Side chains with a C=C in each, joined to carbons {locants}: \"{substituentName}\". Each is numbered from the carbon joined to the main chain, and \"di\", \"tri\" ... say how many."
+        },
+        "alkynyl": {
+          "one": "A side chain with a C≡C in it, joined to carbon {locants}: \"{substituentName}\". The side chain is numbered from the carbon joined to the main chain, and named like an alkyne with \"yl\" on the end.",
+          "other": "Side chains with a C≡C in each, joined to carbons {locants}: \"{substituentName}\". Each is numbered from the carbon joined to the main chain, and \"di\", \"tri\" ... say how many."
+        },
+        "alkyl": {
+          "one": "A carbon side chain joined to carbon {locants}. It is named like the alkane with the same number of carbons, with \"ane\" changed to \"yl\": \"{substituentName}\".",
+          "other": "{count} side chains of carbons, joined to carbons {locants}. Each is named like the alkane with the same number of carbons, with \"ane\" changed to \"yl\" (\"{substituentName}\"), and \"di\", \"tri\" ... say how many."
+        },
+        "substitutedSideChain": {
+          "one": "This side chain, joined to carbon {locants}, has groups of its own. They are named as prefixes of the side chain's name, \"{parentName}\", with locants counted from its carbon joined to the main chain, which is 1. The whole of \"{substituentName}\" is then one prefix, in brackets, put in alphabetical order by its whole name, counting any \"di\" or \"tri\" inside the brackets.",
+          "other": "These side chains, joined to carbons {locants}, have groups of their own. They are named as prefixes of the side chain's name, \"{parentName}\", with locants counted from its carbon joined to the main chain, which is 1. The whole of \"{substituentName}\" is then one prefix, in brackets, with \"bis\", \"tris\" ... to say how many, put in alphabetical order by its whole name, counting any \"di\" or \"tri\" inside the brackets."
+        },
+        "branchedSideChain": {
+          "one": "This side chain, joined to carbon {locants}, branches. Its own principal chain is the longest chain through the carbon joined to the main chain (then the one with the most double bonds), \"{parentName}\", numbered so that carbon gets the lowest locant it can (P-46.1). The side chains and groups on it are prefixes of that name, numbered along it, and the whole of \"{substituentName}\" is then one prefix, in brackets, put in alphabetical order by its whole name, counting any \"di\" or \"tri\" inside the brackets.",
+          "other": "These side chains, joined to carbons {locants}, branch. The principal chain of each is the longest chain through the carbon joined to the main chain (then the one with the most double bonds), \"{parentName}\", numbered so that carbon gets the lowest locant it can (P-46.1). The side chains and groups on it are prefixes of that name, numbered along it, and the whole of \"{substituentName}\" is then one prefix, in brackets, with \"bis\", \"tris\" ... to say how many, put in alphabetical order by its whole name, counting any \"di\" or \"tri\" inside the brackets."
+        },
+        "alkanyl": {
+          "one": "This side chain is joined to carbon {locants} by a carbon that is not at the end of its chain. It is named from its chain, an alkane or alkene with the same number of carbons, with the final \"e\" left out, then the locant of the joining carbon, as low as it can be, and \"yl\" (\"ylidene\" if it is joined by a double bond): \"{substituentName}\" (P-29.2). In a name it goes in brackets, as it has a locant of its own.",
+          "other": "These side chains are joined to carbons {locants} by a carbon that is not at the end of their chain. Each is named from its chain, an alkane or alkene with the same number of carbons, with the final \"e\" left out, then the locant of the joining carbon, as low as it can be, and \"yl\" (\"ylidene\" if it is joined by a double bond): \"{substituentName}\" (P-29.2). In a name it goes in brackets, as it has a locant of its own, with \"di\", \"tri\" ... in front to say how many."
+        },
+        "tertButyl": {
+          "one": "This side chain, -C(CH3)3 joined to carbon {locants}, is \"tert-butyl\", the name IUPAC prefers for it to 2-methylpropan-2-yl. In alphabetical order it goes under b, as the italic \"tert\" is left out (P-14.5.3). It can only be used with nothing on it: with a group on it, the side chain is named from 2-methylpropan-2-yl.",
+          "other": "These side chains, each -C(CH3)3, joined to carbons {locants}, are \"tert-butyl\", the name IUPAC prefers for it to 2-methylpropan-2-yl, with \"di\", \"tri\" ... in front to say how many. In alphabetical order it goes under b, as the italic \"tert\" is left out (P-14.5.3). It can only be used with nothing on it: with a group on it, the side chain is named from 2-methylpropan-2-yl."
+        },
+        "substitutedSideChainWithoutLocants": {
+          "one": "This side chain, joined to carbon {locants}, has groups of its own. They are named as prefixes of the side chain's name, \"{parentName}\", with no locants, as they can only be on one carbon, or swap every hydrogen of it in the same way. The whole of \"{substituentName}\" is then one prefix, in brackets, put in alphabetical order by its whole name, counting any \"di\" or \"tri\" inside the brackets.",
+          "other": "These side chains, joined to carbons {locants}, have groups of their own. They are named as prefixes of the side chain's name, \"{parentName}\", with no locants, as they can only be on one carbon, or swap every hydrogen of it in the same way. The whole of \"{substituentName}\" is then one prefix, in brackets, with \"bis\", \"tris\" ... to say how many, put in alphabetical order by its whole name, counting any \"di\" or \"tri\" inside the brackets."
+        },
+        "acyl": {
+          "one": "This side chain, joined to carbon {locants}, has its C=O on the carbon joined to the main chain, so it is an acyl group: named from its acid, with \"oic acid\" changed to \"oyl\", \"{substituentName}\".",
+          "other": "These side chains, joined to carbons {locants}, have their C=O on the carbon joined to the main chain, so they are acyl groups: named from their acid, with \"oic acid\" changed to \"oyl\", \"{substituentName}\", and \"di\", \"tri\" ... to say how many."
+        },
+        "acetyl": {
+          "one": "This side chain, CO joined to carbon {locants} with a CH3 on it, is an acyl group, named from acetic acid: \"{substituentName}\". IUPAC prefers \"acetyl\" to \"ethanoyl\" for this group.",
+          "other": "These side chains, each a CO joined to the main chain with a CH3 on it, on carbons {locants}, are acyl groups, named from acetic acid: \"{substituentName}\", with \"di\", \"tri\" ... to say how many. IUPAC prefers \"acetyl\" to \"ethanoyl\" for this group."
+        },
+        "substitutedAcyl": {
+          "one": "This side chain, joined to carbon {locants}, has its C=O on the carbon joined to the main chain, so it is an acyl group, \"{parentName}\": named from its acid, with \"oic acid\" changed to \"oyl\" (\"acetyl\", from acetic acid, for two carbons). Its other groups are prefixes in front of that, numbered from the C=O carbon, which is 1, and the whole of \"{substituentName}\" is one prefix, in brackets.",
+          "other": "These side chains, joined to carbons {locants}, have their C=O on the carbon joined to the main chain, so they are acyl groups, \"{parentName}\": named from their acid, with \"oic acid\" changed to \"oyl\" (\"acetyl\", from acetic acid, for two carbons). Their other groups are prefixes in front of that, numbered from the C=O carbon, which is 1, and the whole of \"{substituentName}\" is one prefix, in brackets, with \"bis\", \"tris\" ... to say how many."
+        },
+        "carboxy": {
+          "one": "This COOH group, joined to carbon {locants}, isn't part of the main chain, so it is the prefix \"carboxy\".",
+          "other": "These COOH groups, joined to carbons {locants}, aren't part of the main chain, so they are the prefix \"carboxy\", with \"di\", \"tri\" ... to say how many."
+        },
+        "oxalo": {
+          "one": "This side chain, HOOC-CO- joined to carbon {locants}, is the acyl group of oxalic acid, named \"oxalo\".",
+          "other": "These side chains, HOOC-CO- joined to carbons {locants}, are the acyl group of oxalic acid, named \"oxalo\", with \"di\", \"tri\" ... to say how many."
+        },
+        "nitrogenGroup": "The {groupName} group is on the N, not on a carbon, so its locant is N.",
+        "alsoOnNitrogen": "There are {count} {substituentName} groups: on the N and on the main chain, at {locants}. A group on the N has the locant N, written before the numbers."
+      },
+      "alphanumericalOrder": {
+        "title": "The order of the side groups",
+        "explanation": "Side groups are written in alphabetical order: {order}.",
+        "ignoringMultipliers": "Side groups are written in alphabetical order of their names: {order}. \"di\", \"tri\" and the like don't count for the order."
+      },
+      "locantsLeftOut": {
+        "title": "No numbers needed",
+        "explanation": "Every way of placing the groups on this main chain gives the same molecule, so the name needs no locants."
+      },
+      "stereo": {
+        "title": "E or Z: {descriptors}",
+        "explanation": {
+          "one": "This C=C can't rotate, and each of its carbons has two different groups, so there are two forms. Z: the higher-priority groups (by the CIP rules) on each carbon are on the same side; E: on opposite sides.",
+          "other": "These C=C bonds can't rotate, and each of their carbons has two different groups, so each has two forms. Z: the higher-priority groups (by the CIP rules) on each carbon are on the same side; E: on opposite sides."
+        },
+        "inGroup": "The E or Z of a C=C in a group named on its own, such as a side group, goes at the front of that group's name, with the locant from the group's own numbering, in which carbon 1 is the one joined to the rest of the molecule: (5Z)-4-[(1E)-prop-1-en-1-yl]hepta-1,5-diene."
+      },
+      "cipPriority": {
+        "title": "Which group has the higher priority",
+        "introduction": "For E or Z, the two groups on each carbon of the C=C are put in order by the CIP (Cahn–Ingold–Prelog) rules. First look at the atom each group starts with, the one joined to the C=C carbon: the higher its atomic number, the higher the priority.",
+        "element": "{element} ({atomicNumber})",
+        "here": "compared here",
+        "ties": "If both groups start with the same atom, list the atoms joined to it in each group, highest atomic number first, and compare the lists in turn: the first difference decides. So CH2OH, {O, H, H}, beats CH(CH3)2, {C, C, H}, as O beats C. If the lists are the same too, go one bond further out, and so on.",
+        "duplicates": "A double bond counts as two single bonds, so the atom at its other end is counted twice, the extra copy written in brackets: CH=CH2 is {C, (C), H}.",
+        "bondHeading": "The C=C of {descriptor}",
+        "bondHeadingInGroup": "The C=C of {descriptor} in {where}",
+        "inPrefix": "the {groupName} on carbon {locant}",
+        "beyondOxygenOnCarbon": "the {groupName} on the O at carbon {locant}",
+        "beyondNitrogenOnCarbon": "the {groupName} on the NH at carbon {locant}",
+        "inNitrogenGroup": "the {groupName} on the N",
+        "inEsterGroup": "{groupName}, the ester's group",
+        "carbon": "Carbon {locant}",
+        "carbonLower": "carbon {locant}",
+        "carbonOfGroup": "Carbon {locant} of {groupName}",
+        "carbonOfGroupLower": "carbon {locant} of {groupName}",
+        "sideChainCarbon": "The side chain's carbon",
+        "groupThrough": "{formula} by way of {carbon}",
+        "ringGroup": "the ring",
+        "ringGroupThrough": "the ring by way of {carbon}",
+        "byFirstAtom": "{carbon}: {higher} has the higher priority, not {lower}, as {higherElement} (atomic number {higherNumber}) beats {lowerElement} ({lowerNumber}).",
+        "byNextAtoms": "{carbon}: {higher} and {lower} both start with {element}, so compare the atoms joined to it: {higherSet} beats {lowerSet}, so {higher} has the higher priority.",
+        "byAtomsFurtherOut": {
+          "one": "{carbon}: {higher} and {lower} both start with {element}, and are the same until {count} bond beyond it, where {higherSet} beats {lowerSet}, so {higher} has the higher priority.",
+          "other": "{carbon}: {higher} and {lower} both start with {element}, and are the same until {count} bonds beyond it, where {higherSet} beats {lowerSet}, so {higher} has the higher priority."
+        },
+        "bySequenceRule3": "{carbon}: its two groups, {higher} and {lower}, have the same atoms joined the same way, and differ only in a C=C further out. A Z C=C beats an E one, and an E one beats one that is neither (CIP Sequence Rule 3), so {higher} has the higher priority.",
+        "sameSide": "The higher-priority groups, {first} and {second}, are on the same side of the C=C, so it is {descriptor}.",
+        "oppositeSides": "The higher-priority groups, {first} and {second}, are on opposite sides of the C=C, so it is {descriptor}."
+      },
+      "esterGroup": {
+        "title": "The ester's group: {groupName}",
+        "explanation": "The carbon group joined to the O of the ester is written first, as a separate word: \"{groupName}\"."
+      },
+      "retainedName": {
+        "title": "A retained name: {retainedParent}",
+        "systematicAlsoAccepted": "The systematic name, {systematicName}, is still a correct IUPAC name, and is accepted as an answer: it just isn't the preferred one. Turn off P to see how it is worked out."
+      },
+      "notPreferredName": {
+        "title": "Not the preferred name",
+        "explanation": "This is how the rules build the name, and {systematicName} is a correct IUPAC name. But IUPAC keeps the older name \"{retainedParent}\" for \"{systematicParent}\" and makes it the preferred one, so the preferred IUPAC name is {preferredName}. Turn on P to see why."
+      }
+    },
+    "addAtom": {
+      "title": "Add atom",
+      "tips": "Tips for adding atoms",
+      "tipDoubleBonds": "Ctrl + click a bond to make it double: C=C, or C=O from C-OH.",
+      "tipIntoBonds": "Try dropping O or N into a bond between two carbons, not only onto a hydrogen.",
+      "tipRings": "Drag a carbon onto another to join them in a ring.",
+      "carbon": "Carbon",
+      "carbonTitle": "Click to add a carbon atom",
+      "hydrogen": "Hydrogen",
+      "hydrogenTitle": "Hydrogen atoms are added automatically",
+      "oxygen": "Oxygen",
+      "oxygenTitle": "Click to add an oxygen atom",
+      "nitrogen": "Nitrogen",
+      "nitrogenTitle": "Click to add a nitrogen atom",
+      "halogens": "Halogens",
+      "fluorine": "Fluorine",
+      "chlorine": "Chlorine",
+      "bromine": "Bromine",
+      "iodine": "Iodine",
+      "fluorineTitle": "Click to add a fluorine atom",
+      "chlorineTitle": "Click to add a chlorine atom",
+      "bromineTitle": "Click to add a bromine atom",
+      "iodineTitle": "Click to add an iodine atom",
+      "doubleBond": "Double bond",
+      "doubleBondTitle": "Use to double a bond, you can also Control + click existing bonds without pressing this",
+      "erase": "Erase",
+      "eraseTitle": "While this is on, click a carbon, bond or group (halogen, OH or =O) to remove it. Press again or Esc to stop. Right-clicking erases at any time.",
+      "makeSmaller": "Make the Add atom menu smaller",
+      "makeBigger": "Make the Add atom menu bigger",
+      "smaller": "Smaller",
+      "bigger": "Bigger"
+    },
+    "view": {
+      "label": "How to show the molecule",
+      "displayed": "Displayed",
+      "displayedTitle": "Every atom and bond shown",
+      "skeletal": "Skeletal",
+      "skeletalTitle": "Lines only: each corner and line end is a carbon"
+    },
+    "drawing": {
+      "displayedFormulaLabel": "Displayed formula of the molecule",
+      "skeletalFormulaLabel": "Skeletal formula of the molecule",
+      "emptyDrawing": "Hold Ctrl and click here to place a carbon atom (or press Carbon on the left), or type a name or formula in the box above.",
+      "clickToAddCarbon": "Click to add Carbon",
+      "clickToAddCarbonUntilEsc": "Click to add Carbon (Esc to stop)",
+      "erasingUntilEsc": "Erasing (Esc to stop)",
+      "clickToErase": "Click to erase",
+      "clickBondToMakeDoubleUntilEsc": "Click a bond to make it double (Esc to stop)",
+      "dragToMoveCarbon": "Drag to move · right-click to erase",
+      "dragToTurnBond": "Drag to turn · right-click to erase",
+      "ctrlClickForCarbon": "Ctrl + click for Carbon",
+      "bondTitle": "Drag to turn this bond. Ctrl + click to make it double or single. Right-click to remove its smaller side.",
+      "bondTitleWhileErasing": "Click to remove the smaller side of this bond",
+      "carbonTitle": "Drag to move this carbon, or onto another carbon to join them. Right-click to remove it.",
+      "carbonTitleWhileErasing": "Click to remove this carbon",
+      "releaseToPlaceCarbon": "Release to place this carbon",
+      "newCarbonReplacesHydrogen": "The new carbon replaces this hydrogen",
+      "tooCloseToAnotherCarbon": "Too close to another carbon.",
+      "everyCarbonHasFourBonds": "Every carbon already has 4 bonds.",
+      "clickToMakeDoubleBond": "Click to make a double bond",
+      "clickToMakeSingleBond": "Click to make a single bond",
+      "cannotMakeDoubleBond": "Can't be double: a carbon here already has 4 bonds",
+      "releaseToCloseRing": "Release to join these carbons and close a ring",
+      "releaseToJoinCarbons": "Release to join these carbons",
+      "carbonsAlreadyBonded": "These carbons are already bonded",
+      "carbonHasNoRoomToJoin": "Can't join: a carbon here already has 4 bonds",
+      "ringBondCannotTurn": "Bonds in a ring can't be turned · right-click to open the ring",
+      "clickToSwapHydrogenForGroup": "Click to swap this H for {symbol}",
+      "clickToChangeGroup": "Click to change to {symbol}",
+      "clickToPutHydrogenBack": "Click to put the H back",
+      "clickToPutLinkInBond": "Click to put {symbol} in this bond",
+      "clickToTakeLinkOutOfBond": "Click to take {symbol} out of this bond",
+      "linkNeedsSingleBond": "{symbol} can only go in a single bond",
+      "pointAtHydrogenUntilEsc": "Point at a hydrogen to swap it for {symbol} (Esc to stop)",
+      "pointAtHydrogenOrBondUntilEsc": "Point at a hydrogen or a bond to add {symbol} there (Esc to stop)",
+      "carbonHasNoHydrogenToSwap": "This carbon has no hydrogen left to swap",
+      "clickToMakeCarbonOxygenDouble": "Click to make this C=O",
+      "clickToMakeCarbonOxygenSingle": "Click to make this C-OH again",
+      "onlyBondToOxygenCanBeDouble": "Only a bond to O can be made double here",
+      "ctrlClickToChangeBondToGroup": "Drag to move · Ctrl + click to make C=O or C-OH · right-click to erase",
+      "groupBondTitle": "Drag to move the group. Ctrl + click the bond to an OH to make it C=O, and again to make it single. Right-click to remove the group.",
+      "dragToMoveGroup": "Drag to move · right-click to erase",
+      "groupTitle": "Drag to move this atom: its bonds stay joined. Right-click to remove the group: hydrogens go back in its place.",
+      "dragToMoveHydrogen": "Drag to move",
+      "hydrogenTitle": "Drag to move this hydrogen: its bond stays joined.",
+      "dragToMoveLinkAtom": "Drag to move · right-click to take it out of the bond",
+      "linkAtomTitle": "Drag to move this atom: its bonds stay joined. Right-click to take it out of the bond.",
+      "linkAtomTitleWhileErasing": "Click to take this out of the bond",
+      "wouldChangeEOrZ": "Going further would change whether a C=C is E or Z, and so the name",
+      "groupTitleWhileErasing": "Click to remove this group"
+    },
+    "answer": {
+      "placeholder": "Name the molecule you see",
+      "correct": "Correct",
+      "notCorrect": "Not correct",
+      "hintStereoLeftOut": "Nearly! This C=C has E and Z forms, and the drawing shows one of them. Say which at the front of the name, in brackets with the locant of the C=C, e.g. (2E)-but-2-ene.",
+      "hintStereoWrongWayRound": "Nearly! Check E and Z. On each carbon of the C=C, rank its two groups by the CIP rules: the atom with the higher atomic number ranks higher, and if they tie, compare the atoms joined to them. The two higher-ranked groups on the same side of the C=C make it Z, on opposite sides E.",
+      "hintStereoNeedsLocants": "Nearly! Write each E or Z with the locant of its C=C: (2E)-but-2-ene, not (E)-but-2-ene. The locant is only left out when the name has no locants at all, as in (E)-cyclooctene.",
+      "hintStereoBrackets": "Nearly! E and Z go in brackets, followed by a hyphen: (2E)-but-2-ene, not 2E-but-2-ene.",
+      "hintStereoHyphen": "Nearly! Put a hyphen after the brackets round E and Z: (2E)-but-2-ene.",
+      "hintStereoOrder": "Nearly! List E and Z in order of their locants, lowest first: (2Z,4E)-hexa-2,4-diene.",
+      "hintLowerLocantToZ": "Nearly! That name describes this molecule, but is numbered from the wrong end. When either end gives the same locants, the lower locant goes to the Z double bond: (2Z,4E)-hexa-2,4-diene, not (2E,4Z)-hexa-2,4-diene.",
+      "hintStereoInWrongPart": "Nearly! E and Z go at the front of the part of the name they belong to: in an ester, at the front of the acid's word, as in methyl (2E)-but-2-enoate, and for a C=C in a side chain, inside that side chain's brackets, as in 3-[(1E)-prop-1-en-1-yl].",
+      "hintPunctuation": "Nearly! Check your punctuation: commas go between numbers (2,3-), hyphens go between numbers and words (2-methyl), and there are no spaces, except before the word acid (propanoic acid).",
+      "hintFinalEOfParent": "Nearly! Check the e at the end of -ane and -ene. Leave it out before an ending that begins with a vowel (a, e, i, o, u or y), as in propan-2-ol, but-3-en-2-one, oct-7-enoic acid and prop-2-en-1-yl, but keep it before a consonant, as in propane-1,2-diol and butanedioic acid.",
+      "hintFinalAOfMultiplyingPrefix": "Nearly! Leave out the final a of tetra, penta, hexa ... before an ending that begins with a or o: butane-1,2,3,4-tetrol, not butane-1,2,3,4-tetraol. It stays before other letters, as in octa-1,3,5,7-tetraene.",
+      "hintABeforeMultipliedEne": "Nearly! An a goes after the stem only when -ene has di, tri ... in front of it: buta-1,3-diene and hexa-1,3,5-triene, but but-2-ene.",
+      "hintBracketsAfterFirstPrefix": "Nearly! When all the groups are on one carbon and no locants are written, as on methane, every prefix after the first goes in brackets, e.g. trichloro(fluoro)methane, bromo(chloro)acetic acid.",
+      "hintLeaveOutMultipleBondLocant": "That name describes this molecule, but here the locant of the double or triple bond is left out: it could only go in one place, as in propene and propyne (not prop-1-ene or prop-1-yne).",
+      "hintLeaveOutLocants": "That name describes this molecule, but here the locants are left out: each group could only go in one place, as in chloroethane (not 1-chloroethane).",
+      "hintHydroxyAsSuffix": "In an alcohol, the OH group is shown by the ending -ol, not the prefix hydroxy: e.g. propan-2-ol, not 2-hydroxypropane.",
+      "hintKetoneAsSuffix": "In a ketone, the C=O is shown by the ending -one, not the prefix oxo: e.g. propan-2-one, not 2-oxopropane. Oxo is only used when there is also a CHO or COOH group, as in 3-oxobutanal and 3-oxobutanoic acid.",
+      "hintAldehydeLocant": "The CHO group of an aldehyde is always on carbon 1 (and the last carbon for -dial), so the locants of -al are left out: e.g. propanal, not propan-1-al, and butanedial, not butane-1,4-dial.",
+      "hintCarboxylicAcidLocant": "The COOH group of a carboxylic acid is always on carbon 1 (and the last carbon for -dioic acid), so the locants of -oic acid are left out: e.g. propanoic acid, not propan-1-oic acid, and butanedioic acid, not butane-1,4-dioic acid.",
+      "hintNotTheChainWithMostMultipleBonds": "That name describes this molecule, but it is not based on the right main chain: of the longest chains, the main chain is the one with the most C=C and C≡C bonds, then the most C=C bonds, as in 3-ethylpent-1-ene (not 3-ethenylpentane).",
+      "hintNotTheLongestChain": "That name describes this molecule, but it is not based on the right main chain: the longest carbon chain or, in an acid, aldehyde, ketone or alcohol, the longest chain with as many COOH groups (or, with none, CHO groups, then ketone C=O groups, then OH groups) on it as possible.",
+      "hintGroupIdenticalSideChains": "Group identical side chains together using di-, tri-, tetra- (e.g. 2,3-dimethyl).",
+      "hintAlphabeticalOrder": "Write the side chains and halogens in alphabetical order (ignore di-, tri- when sorting), e.g. 2-bromo-3-methyl.",
+      "hintLowestLocants": "That name describes this molecule, but the numbering is not right. Number the chain from the end that gives the lowest locants: to the group named by the ending (-oic acid, -al, -one or -ol) first, then the double bonds, then the side chains, halogens and other groups together.",
+      "hintPrefixNotRecommended": "IUPAC no longer recommends the prefix {prefix} (P-29.6.3): use its preferred prefix, {preferredPrefix}, and put it in its place in alphabetical order."
+    },
+    "footer": "Free, open-source learning tool, still in development. Provided as-is, with no guarantee. Names follow the IUPAC 2013 Recommendations."
+  }
+}
