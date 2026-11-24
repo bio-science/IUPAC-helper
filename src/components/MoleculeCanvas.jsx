@@ -49,7 +49,9 @@
  *
  * The whole molecule is shown in the part of the drawing that the menus at its sides (or, on a
  * phone held upright, along its bottom) don't cover (coveredLeft, coveredRight and coveredBottom,
- * in pixels), as large as fits there (see computeViewBox.js).
+ * in pixels), as large as fits there (see computeViewBox.js). While a phone's on-screen keyboard
+ * covers part of the drawing, as when typing a name while practising, the molecule is shown in
+ * the part still in sight, so it can be seen while its name is typed.
  *
  * While a step of "How it was named" is picked (namingStep, see NamingSteps.jsx), the atoms
  * and bonds it is about are marked underneath the molecule.
@@ -124,6 +126,7 @@ import { angleFromPointToPoint, distanceBetweenPoints, pointAtAngleAndDistance }
 import { CARBON_CIRCLE_RADIUS, HYDROGEN_CIRCLE_RADIUS, OXYGEN_CIRCLE_RADIUS } from '../geometry/drawingDimensions.js';
 import { useTranslation } from '../languages/LanguageProvider.jsx';
 import { useElementSize } from '../hooks/useElementSize.js';
+import { usePartHiddenOffScreen } from '../hooks/usePartHiddenOffScreen.js';
 
 /** Converts a pointer position on the screen into a position in the drawing's own units. */
 function convertPointerPositionToDrawingPoint(svgElement, pointerEvent) {
@@ -375,6 +378,7 @@ export default function MoleculeCanvas({
   const t = useTranslation();
   const svgElementReference = useRef(null);
   const [measureSvgElement, svgSize] = useElementSize();
+  const partHiddenByKeyboard = usePartHiddenOffScreen(svgElementReference, svgSize);
   // The same function every render: a new one would make React detach and re-attach it, re-measuring each time.
   const keepSvgElement = useCallback(
     (svgElement) => {
@@ -439,9 +443,10 @@ export default function MoleculeCanvas({
         screenHeight: svgSize.height,
         coveredLeft,
         coveredRight,
-        coveredBottom,
+        coveredTop: partHiddenByKeyboard.top,
+        coveredBottom: Math.max(coveredBottom, partHiddenByKeyboard.bottom),
       }),
-    [carbonSkeleton, svgSize, coveredLeft, coveredRight, coveredBottom],
+    [carbonSkeleton, svgSize, coveredLeft, coveredRight, coveredBottom, partHiddenByKeyboard],
   );
   const view = chosenView ?? viewAroundMolecule;
 
