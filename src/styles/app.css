@@ -891,17 +891,33 @@ button:disabled {
   pointer-events: none;
 }
 
-/* ---------- Add atom menu: on the left of the drawing, from a little above the middle ---------- */
+/*
+ * ---------- Add atom menu: on the left of the drawing, a little below the middle ----------
+ * It has twice as much room above it as below, and never reaches past the top or bottom of
+ * the drawing area (or, on a phone held upright, "How it was named" along the bottom: see
+ * --covered-bottom, set in App.jsx). If it doesn't fit, it scrolls.
+ */
 .add-atom-palette {
   position: absolute;
   left: 0;
-  top: 50%;
-  transform: translateY(-30%);
-  display: flex;
-  align-items: center;
+  top: 0;
+  bottom: var(--covered-bottom, 0px);
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 2fr fit-content(100%) 1fr;
+  pointer-events: none;
+}
+
+.add-atom-palette > * {
+  pointer-events: auto;
 }
 
 .add-atom-palette__body {
+  grid-row: 2;
+  grid-column: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -949,6 +965,9 @@ button:disabled {
 }
 
 .add-atom-palette__tips {
+  /* Placed against the tab's cell, so its top lines up with the top of the menu. */
+  grid-row: 2;
+  grid-column: 2;
   position: absolute;
   left: calc(100% + 0.4rem);
   top: 0;
@@ -1058,6 +1077,9 @@ button:disabled {
 }
 
 .add-atom-palette__tab {
+  grid-row: 2;
+  grid-column: 2;
+  align-self: center;
   padding: 0.6rem 0.2rem;
   border-left: none;
   border-radius: 0 6px 6px 0;
@@ -1065,6 +1087,7 @@ button:disabled {
   line-height: 1;
   color: var(--muted-text-colour);
 }
+
 .bond-line {
   stroke: var(--bond-colour);
   stroke-width: 3;
@@ -1479,4 +1502,302 @@ button:disabled {
   font-size: 13px;
   font-weight: 700;
   fill: var(--accent-colour);
+}
+
+.naming-steps__arrow {
+  display: inline-block;
+}
+
+/*
+ * ---------- Phones ----------
+ * The sizes are the same as in src/components/screenSizes.js. On a computer, none of this applies.
+ *
+ * Any phone: less room round the edges, a smaller title without the line under it, a smaller
+ * omnibox and name, and one row of buttons under the drawing, so the drawing gets as much of
+ * the screen as it can.
+ */
+@media (max-width: 600px), (max-height: 500px) {
+  .app {
+    gap: 0.35rem;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .app__header {
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .app__header h1 {
+    font-size: 1.05rem;
+  }
+
+  .app__header p {
+    display: none;
+  }
+
+  .diagram-card {
+    --gap-of-one-line: 0.5rem;
+  }
+
+  .diagram-card__top {
+    padding: 0.4rem 0.4rem 0;
+  }
+
+  .diagram-card__top-middle {
+    width: 100%;
+  }
+
+  /* 16px, as a smaller text box makes the iPhone zoom in when it is tapped */
+  .omnibox__input,
+  .omnibox__marks,
+  .omnibox__job-change {
+    font-size: 1rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .omnibox__message {
+    font-size: 0.85rem;
+  }
+
+  .diagram-title {
+    gap: 0.25rem 0.75rem;
+    padding-top: 0.25rem;
+  }
+
+  .diagram-title__name {
+    font-size: 1.2rem;
+  }
+
+  .diagram-title__formula {
+    font-size: 1rem;
+  }
+
+  /* The bar under the drawing is one row: Displayed and Skeletal on the left, Undo on the right. */
+  .diagram-card {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+  }
+
+  .diagram-card__top,
+  .diagram-card__drawing {
+    grid-column: 1 / -1;
+  }
+
+  .diagram-card__controls,
+  .diagram-card__bottom {
+    grid-row: 3;
+    padding: 0.35rem;
+    border-top: 1px solid var(--border-colour);
+  }
+
+  .diagram-card__controls {
+    grid-column: 1;
+  }
+
+  .diagram-card__bottom {
+    grid-column: 2;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+  }
+
+  .practice-changed {
+    flex-wrap: nowrap;
+    font-size: 0.8rem;
+    text-align: right;
+  }
+
+  .footer {
+    font-size: 0.65rem;
+    line-height: 1.25;
+  }
+}
+
+/*
+ * A phone held upright: the practice choices shrink to fit beside the view buttons, and
+ * "How it was named" goes along the bottom of the drawing, at most half its height, so the
+ * molecule is shown in the room above it (App.jsx tells the drawing how much it covers).
+ */
+@media (max-width: 600px) {
+  /* Edge to edge: no margin round the page and no rounded corners on the card. The column
+     never grows past the screen, so the one-line title and footer are cut short instead. */
+  .app {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 0;
+  }
+
+  .diagram-card {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+
+  /* The title on one small line, cut short with … if it doesn't fit */
+  .app__header {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .app__titles {
+    min-width: 0;
+  }
+
+  .app__header h1 {
+    overflow: hidden;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .install-app-button,
+  .language-picker__button {
+    padding-block: 0.1rem;
+  }
+
+  /* Smaller buttons along the top of the drawing, and less room under them */
+  .diagram-card {
+    --gap-of-one-line: 0.3rem;
+  }
+
+  .diagram-card__top {
+    padding: 0.3rem 0.3rem 0;
+  }
+
+  .diagram-card__corner-buttons {
+    gap: 0.25rem;
+  }
+
+  .diagram-card__corner-buttons button,
+  .practise-options__preset {
+    font-size: 0.8rem;
+    padding: 0.15rem 0.45rem;
+  }
+
+  .diagram-card__controls,
+  .diagram-card__bottom {
+    padding: 0.3rem;
+  }
+
+  /* Show name, New molecule and End practise, while practising */
+  .diagram-title {
+    gap: 0.25rem 0.5rem;
+  }
+
+  .diagram-title button,
+  .diagram-title__practise-buttons {
+    font-size: 0.85rem;
+  }
+
+  .diagram-title button:not(.diagram-title__retained-name-button, .diagram-title__retained-name-close) {
+    padding: 0.2rem 0.55rem;
+  }
+
+  .diagram-card__controls button,
+  .diagram-card__undo {
+    padding: 0.25rem 0.7rem;
+  }
+
+  /* The footer on one line, cut short with …; tapping it shows the whole text (Footer.jsx). */
+  .footer {
+    padding: 0.15rem 0.5rem;
+  }
+
+  .footer__text {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 0.65rem;
+    color: inherit;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+
+  .footer__text--expanded {
+    white-space: normal;
+  }
+
+  .diagram-card__drawing {
+    container-type: size;
+  }
+
+  .diagram-card__corner-buttons {
+    flex-wrap: nowrap;
+  }
+
+  .practise-options {
+    min-width: 0;
+  }
+
+  .practise-options__preset {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .diagram-card__corner-buttons button {
+    flex: none;
+  }
+
+  .naming-steps {
+    top: auto;
+    left: 0;
+    bottom: 0;
+    max-height: 50cqh;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .naming-steps__tab,
+  .naming-steps--open .naming-steps__tab {
+    border-right: 1px solid var(--border-colour);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    margin-right: 0.4rem;
+    box-shadow: 0 -2px 8px rgb(0 0 0 / 0.08);
+  }
+
+  .naming-steps__arrow {
+    transform: rotate(90deg);
+  }
+
+  .naming-steps__body {
+    width: 100%;
+    min-height: 0;
+    border: none;
+    border-top: 1px solid var(--border-colour);
+    border-radius: 0;
+    box-shadow: 0 -2px 8px rgb(0 0 0 / 0.08);
+  }
+}
+
+/*
+ * A phone on its side: very little height, so the omnibox and name sit in the middle of the
+ * row of buttons along the top, rather than under it.
+ */
+@media (max-height: 500px) and (min-width: 601px) {
+  .diagram-card__top {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: start;
+    column-gap: 0.35rem;
+  }
+
+  .diagram-card__corner-buttons {
+    display: contents;
+  }
+
+  .diagram-card__corner-spacer {
+    display: none;
+  }
+
+  .diagram-card__top-middle {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: center;
+    width: min(36rem, 100%);
+    margin-top: 0;
+  }
 }

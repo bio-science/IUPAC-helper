@@ -47,8 +47,9 @@
  * The displayed and skeletal formulae are drawn from the same positions and the same view,
  * so switching between them never changes the shape.
  *
- * The whole molecule is shown in the part of the drawing that the menus at its sides don't
- * cover (coveredLeft and coveredRight, in pixels), as large as fits there (see computeViewBox.js).
+ * The whole molecule is shown in the part of the drawing that the menus at its sides (or, on a
+ * phone held upright, along its bottom) don't cover (coveredLeft, coveredRight and coveredBottom,
+ * in pixels), as large as fits there (see computeViewBox.js).
  *
  * While a step of "How it was named" is picked (namingStep, see NamingSteps.jsx), the atoms
  * and bonds it is about are marked underneath the molecule.
@@ -369,6 +370,7 @@ export default function MoleculeCanvas({
   namingStep = null,
   coveredLeft = 0,
   coveredRight = 0,
+  coveredBottom = 0,
 }) {
   const t = useTranslation();
   const svgElementReference = useRef(null);
@@ -431,8 +433,15 @@ export default function MoleculeCanvas({
   const drawingIsEmpty = isSkeletonEmpty(carbonSkeleton);
 
   const viewAroundMolecule = useMemo(
-    () => computeViewBoxFittingMolecule(carbonSkeleton, { screenWidth: svgSize.width, screenHeight: svgSize.height, coveredLeft, coveredRight }),
-    [carbonSkeleton, svgSize, coveredLeft, coveredRight],
+    () =>
+      computeViewBoxFittingMolecule(carbonSkeleton, {
+        screenWidth: svgSize.width,
+        screenHeight: svgSize.height,
+        coveredLeft,
+        coveredRight,
+        coveredBottom,
+      }),
+    [carbonSkeleton, svgSize, coveredLeft, coveredRight, coveredBottom],
   );
   const view = chosenView ?? viewAroundMolecule;
 

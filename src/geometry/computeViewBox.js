@@ -3,7 +3,7 @@
  *
  * The student can drag the view around, and "Reset view" brings it back to this one:
  * the whole molecule, with its hydrogens, halogens and OH groups, in the middle of the part
- * of the drawing area that the menus beside it don't cover. The same view is used for the
+ * of the drawing area that the menus beside, above or below it don't cover. The same view is used for the
  * displayed and skeletal formulae, so switching between them doesn't move anything.
  */
 
@@ -61,35 +61,45 @@ export function computeViewBoxAroundMolecule(skeleton) {
 }
 
 /**
- * The view for a drawing area of screenWidth x screenHeight pixels whose left and right edges
- * are covered by coveredLeft and coveredRight pixels (by menus over the drawing). The molecule is
- * centred in the part that isn't covered, as large as it fits there, but never larger than the
- * standard drawing area would show it in the whole drawing area (so a small molecule isn't blown
- * up to fill the screen). The view has the drawing area's own shape, so it fills it exactly.
+ * How much of one direction of the drawing area (its width or height) is left free by menus
+ * covering coveredBefore and coveredAfter pixels at its two ends: { freeStart, freeLength }.
+ * Menus that would leave almost nothing are drawn over, rather than squeezing the molecule
+ * into a sliver: then each is counted as covering less, in proportion, so a quarter stays free.
  */
-export function computeViewBoxFittingMolecule(skeleton, { screenWidth, screenHeight, coveredLeft = 0, coveredRight = 0 }) {
+function findFreeRoom(screenLength, coveredBefore, coveredAfter) {
+  const smallestFreeLength = screenLength / 4;
+  const covered = coveredBefore + coveredAfter;
+  const shrink = covered > screenLength - smallestFreeLength ? (screenLength - smallestFreeLength) / covered : 1;
+  return { freeStart: coveredBefore * shrink, freeLength: screenLength - covered * shrink };
+}
+
+/**
+ * The view for a drawing area of screenWidth x screenHeight pixels whose edges are covered by
+ * menus over the drawing: coveredLeft, coveredRight, coveredTop and coveredBottom pixels. The
+ * molecule is centred in the part that isn't covered, as large as it fits there, but never larger
+ * than the standard drawing area would show it in the whole drawing area (so a small molecule
+ * isn't blown up to fill the screen). The view has the drawing area's own shape, so it fills it exactly.
+ */
+export function computeViewBoxFittingMolecule(
+  skeleton,
+  { screenWidth, screenHeight, coveredLeft = 0, coveredRight = 0, coveredTop = 0, coveredBottom = 0 },
+) {
   if (!(screenWidth > 0 && screenHeight > 0)) return computeViewBoxAroundMolecule(skeleton);
   const box = boxAroundMolecule(skeleton) ?? SMALLEST_VISIBLE_DRAWING_AREA;
 
-  // Menus that would leave almost nothing are drawn over, rather than squeezing the molecule into a sliver.
-  const smallestFreeWidth = screenWidth / 4;
-  const covered = coveredLeft + coveredRight;
-  const shrink = covered > screenWidth - smallestFreeWidth ? (screenWidth - smallestFreeWidth) / covered : 1;
-  const freeLeft = coveredLeft * shrink;
-  const freeWidth = screenWidth - covered * shrink;
+  const across = findFreeRoom(screenWidth, coveredLeft, coveredRight);
+  const down = findFreeRoom(screenHeight, coveredTop, coveredBottom);
 
   const largestScale = Math.min(screenWidth / SMALLEST_VISIBLE_DRAWING_AREA.width, screenHeight / SMALLEST_VISIBLE_DRAWING_AREA.height);
-  const pixelsPerDrawingUnit = Math.min(largestScale, freeWidth / box.width, screenHeight / box.height);
+  const pixelsPerDrawingUnit = Math.min(largestScale, across.freeLength / box.width, down.freeLength / box.height);
 
   const centreX = box.left + box.width / 2;
   const centreY = box.top + box.height / 2;
-  const width = screenWidth / pixelsPerDrawingUnit;
-  const height = screenHeight / pixelsPerDrawingUnit;
   return {
-    left: centreX - (freeLeft + freeWidth / 2) / pixelsPerDrawingUnit,
-    top: centreY - height / 2,
-    width,
-    height,
+    left: centreX - (across.freeStart + across.freeLength / 2) / pixelsPerDrawingUnit,
+    top: centreY - (down.freeStart + down.freeLength / 2) / pixelsPerDrawingUnit,
+    width: screenWidth / pixelsPerDrawingUnit,
+    height: screenHeight / pixelsPerDrawingUnit,
   };
 }
 

@@ -1,6 +1,6 @@
 /**
  * Which part of the drawing is shown (computeViewBox.js): the whole molecule, centred in the part
- * of the drawing area the menus at its sides don't cover, as large as fits there.
+ * of the drawing area the menus at its sides (or along its top or bottom) don't cover, as large as fits there.
  */
 import { describe, expect, it } from 'vitest';
 import { computeViewBoxFittingMolecule } from '../../../src/geometry/computeViewBox.js';
@@ -66,6 +66,36 @@ describe('fitting the molecule into the drawing area', () => {
     const view = computeViewBoxFittingMolecule(chain, { ...screen, coveredLeft: 500, coveredRight: 650 });
     const [first, last] = chainEndsOnScreen(chain, view, 1200);
     expect(last.x - first.x).toBeGreaterThan(1200 / 4 - 160);
+  });
+
+  it('centres the molecule in the part a menu along the bottom does not cover', () => {
+    const chain = buildChain(4);
+    const view = computeViewBoxFittingMolecule(chain, { ...screen, coveredBottom: 200 });
+    const [first, last] = chainEndsOnScreen(chain, view, 1200);
+    expect(first.y).toBeCloseTo((600 - 200) / 2);
+    expect((first.x + last.x) / 2).toBeCloseTo(600);
+  });
+
+  it('makes a molecule smaller to fit above a menu along the bottom, on a tall narrow screen', () => {
+    // A phone held upright: a tall branched molecule, with "How it was named" over the lower half.
+    const tallMolecule = {
+      carbonAtoms: Array.from({ length: 6 }, (_, index) => ({ atomId: index + 1, positionX: 0, positionY: index * 110 })),
+      carbonCarbonBonds: Array.from({ length: 5 }, (_, index) => ({ firstAtomId: index + 1, secondAtomId: index + 2 })),
+    };
+    const phone = { screenWidth: 360, screenHeight: 500 };
+    const view = computeViewBoxFittingMolecule(tallMolecule, { ...phone, coveredBottom: 250 });
+    const top = onScreen(view, 360, { x: 0, y: 0 });
+    const bottom = onScreen(view, 360, { x: 0, y: 550 });
+    expect(top.y).toBeGreaterThan(0);
+    expect(bottom.y).toBeLessThan(250);
+  });
+
+  it('draws over a menu along the bottom that would leave almost no room', () => {
+    const chain = buildChain(4);
+    const view = computeViewBoxFittingMolecule(chain, { ...screen, coveredBottom: 580 });
+    const [first] = chainEndsOnScreen(chain, view, 1200);
+    // A quarter of the height is kept free, and the molecule is centred in it.
+    expect(first.y).toBeCloseTo(600 / 4 / 2);
   });
 
   it('still gives a view when nothing is drawn, or before the drawing area has a size', () => {

@@ -22,7 +22,8 @@
  * O and N can be dropped into a bond.
  *
  * The arrow tab shrinks the menu to just the atom symbols, so it takes less room but
- * still shows what is selected. Practice also shrinks it (see App.jsx).
+ * still shows what is selected. Practice also shrinks it, and on a phone it starts small (see App.jsx).
+ * It never reaches past the top or bottom of the drawing area: on a short screen it scrolls.
  */
 import { useId, useState } from 'react';
 import { useTranslation } from '../languages/LanguageProvider.jsx';
@@ -82,22 +83,6 @@ export default function AddAtomPalette({
               ?
             </button>
           </h2>
-        )}
-        {isOpen && areTipsOpen && (
-          <section
-            id={tipsId}
-            className="add-atom-palette__tips"
-            aria-label={t('addAtom.tips')}
-            onKeyDown={(event) => {
-              if (event.key === 'Escape') setAreTipsOpen(false);
-            }}
-          >
-            <ul>
-              {TIP_KEYS.map((tipKey) => (
-                <li key={tipKey}>{t(tipKey)}</li>
-              ))}
-            </ul>
-          </section>
         )}
         <button
           type="button"
@@ -171,6 +156,23 @@ export default function AddAtomPalette({
           {label(t('addAtom.erase'))}
         </button>
       </div>
+      {/* Beside the menu rather than in it, so it isn't cut off when the menu scrolls on a short screen. */}
+      {isOpen && areTipsOpen && (
+        <section
+          id={tipsId}
+          className="add-atom-palette__tips"
+          aria-label={t('addAtom.tips')}
+          onKeyDown={(event) => {
+            if (event.key === 'Escape') setAreTipsOpen(false);
+          }}
+        >
+          <ul>
+            {TIP_KEYS.map((tipKey) => (
+              <li key={tipKey}>{t(tipKey)}</li>
+            ))}
+          </ul>
+        </section>
+      )}
       <button
         type="button"
         className="add-atom-palette__tab"

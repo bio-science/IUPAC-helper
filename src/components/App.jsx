@@ -9,9 +9,11 @@
  *                      while practising, the student types their name for the molecule here instead
  *   DiagramTitle       the name (unless hidden while practising), and the molecular formula unless the omnibox shows it
  *   AddAtomPalette     the Add atom menu on the left of the drawing (Carbon, O, N, halogen, Double bond and Erase switches);
- *                      practice makes it small, and it opens again afterwards unless it was made small by hand
+ *                      practice makes it small, and it opens again afterwards unless it was made small by hand;
+ *                      on a phone it starts small
  *   MoleculeCanvas     add, erase, move and turn atoms by hand  -> edits the molecule
- *   NamingSteps        "How it was named", on the right of the drawing: pick a step to mark it on the drawing and in the name
+ *   NamingSteps        "How it was named", on the right of the drawing (along its bottom on a phone held upright):
+ *                      pick a step to mark it on the drawing and in the name
  *
  * The molecule is stored as a carbon skeleton (see src/chemistry/carbonSkeleton.js),
  * and its name is recalculated whenever it changes. Every change made by hand is
@@ -33,6 +35,8 @@ import { DISPLAY_MODES } from './displayModes.js';
 import { useTranslation } from '../languages/LanguageProvider.jsx';
 import { useSubscriptsKeptWhenCopying } from '../hooks/useSubscriptsKeptWhenCopying.js';
 import { useElementSize } from '../hooks/useElementSize.js';
+import { matchesMediaQuery, useMediaQuery } from '../hooks/useMediaQuery.js';
+import { PHONE_UPRIGHT, SMALL_SCREEN } from './screenSizes.js';
 import { message } from '../languages/translate.js';
 import { countAtomsInMolecule, createEmptyCarbonSkeleton, isSkeletonEmpty } from '../chemistry/carbonSkeleton.js';
 import { nameCarbonSkeleton } from '../chemistry/nameCarbonSkeleton.js';
@@ -85,7 +89,8 @@ export default function App() {
   const [isDoubleBondModeOn, setIsDoubleBondModeOn] = useState(false);
   /** The atom each click adds while the Add atom menu has one switched on: 'C', 'OH', 'F', 'Cl', 'Br', 'I', or null. */
   const [atomToAdd, setAtomToAdd] = useState(null);
-  const [isAddAtomPaletteOpen, setIsAddAtomPaletteOpen] = useState(true);
+  // On a phone it starts small, to leave the narrow drawing area to the molecule.
+  const [isAddAtomPaletteOpen, setIsAddAtomPaletteOpen] = useState(() => !matchesMediaQuery(SMALL_SCREEN));
   /** True while the Add atom menu is small only because practice made it so; it opens again when practice ends. */
   const [wasAddAtomPaletteShrunkByPractice, setWasAddAtomPaletteShrunkByPractice] = useState(false);
   /** Goes up by one each time a whole new molecule is shown, so the drawing area can show it whole. */
@@ -122,9 +127,15 @@ export default function App() {
     chosenNamingStep !== null && namingResult.isNameable && chosenNamingStep.iupacName === namingResult.iupacName ? chosenNamingStep.index : null;
   const chosenStep = (chosenStepIndex !== null && namingSteps[chosenStepIndex]) || null;
   const highlightedNameRanges = chosenStep?.nameRanges ?? [];
-  // The menus at the sides of the drawing, measured so the molecule can be shown in the room between them.
+  // The menus over the drawing, measured so the molecule can be shown in the room they leave.
+  // On a phone held upright, "How it was named" is along the bottom (see app.css), so it covers
+  // the bottom of the drawing, and the Add atom menu stays above it.
   const [addAtomPaletteReference, addAtomPaletteSize] = useElementSize();
   const [namingStepsReference, namingStepsSize] = useElementSize();
+  const isPhoneUpright = useMediaQuery(PHONE_UPRIGHT);
+  const areNamingStepsShownOpen = canShowNamingSteps && isNamingStepsOpen;
+  const namingStepsCoverRight = areNamingStepsShownOpen && !isPhoneUpright ? namingStepsSize.width : 0;
+  const namingStepsCoverBottom = areNamingStepsShownOpen && isPhoneUpright ? namingStepsSize.height : 0;
 
   /** The skeletal formula needs a corner at every carbon, so straight chains get a slight zigzag. */
   function arrangeForView(skeleton, viewMode = displayMode) {
@@ -438,7 +449,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="diagram-card__drawing">
+        <div className="diagram-card__drawing" style={{ '--covered-bottom': `${namingStepsCoverBottom}px` }}>
           <MoleculeCanvas
             carbonSkeleton={carbonSkeleton}
             displayMode={displayMode}
@@ -450,7 +461,8 @@ export default function App() {
             onCarbonPositionsChanged={handleCarbonPositionsChanged}
             namingStep={chosenStep}
             coveredLeft={addAtomPaletteSize.width}
-            coveredRight={canShowNamingSteps && isNamingStepsOpen ? namingStepsSize.width : 0}
+            coveredRight={namingStepsCoverRight}
+            coveredBottom={namingStepsCoverBottom}
           />
           <AddAtomPalette
             ref={addAtomPaletteReference}

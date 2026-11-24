@@ -1,5 +1,5 @@
 /**
- * "How it was named", on the right of the drawing: the steps of naming the molecule (from
+ * "How it was named", on the right of the drawing (along its bottom on a phone held upright): the steps of naming the molecule (from
  * listNamingSteps.js) as a list. Picking a step marks the atoms it is about on the drawing
  * and the part of the name it gave, and shows why it was decided that way and which
  * sections of the Blue Book say so. Picking it again unmarks it.
@@ -45,7 +45,11 @@ export default function NamingSteps({
         aria-expanded={isOpen}
         title={t('namingSteps.heading')}
       >
-        {isOpen ? '›' : `‹ ${t('namingSteps.heading')}`}
+        {/* The arrow points the way the list opens or folds away: sideways, or up and down when it is along the bottom. */}
+        <span className="naming-steps__arrow" aria-hidden="true">
+          {isOpen ? '›' : '‹'}
+        </span>
+        {!isOpen && ` ${t('namingSteps.heading')}`}
       </button>
       {isOpen && (
         <div className="naming-steps__body">
